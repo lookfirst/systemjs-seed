@@ -1,0 +1,7 @@
+.idea
+bower_components
+coverage
+dist
+jspm_packages
+node_modules
+index.html
