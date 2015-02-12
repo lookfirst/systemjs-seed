@@ -26,6 +26,7 @@ vinylPaths = require('vinyl-paths')
 RSVP = require('rsvp')
 del = require('del')
 routeBundler = require('systemjs-route-bundler')
+historyApiFallback = require('connect-history-api-fallback')
 
 serverOptions = {}
 serverOptionsProd =
@@ -264,12 +265,15 @@ gulp.task 'lint', ->
 		.pipe(jshint.reporter(stylish))
 
 gulp.task 'serve', (done) ->
+	acao = (req, res, next) ->
+		res.setHeader('Access-Control-Allow-Origin', '*')
+		next()
+
 	serverOptions.server = {
 		baseDir: ['.']
-		middleware: (req, res, next) ->
-			res.setHeader('Access-Control-Allow-Origin', '*')
-			next()
+		middleware: [historyApiFallback, acao]
 	}
+
 	browserSync(serverOptions, done)
 
 gulp.task 'watch', ->
