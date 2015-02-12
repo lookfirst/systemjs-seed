@@ -5,6 +5,7 @@
   "devDependencies": {
     "browser-sync": "^2.0.1",
     "coffee-script": "^1.9.0",
+    "connect-history-api-fallback": "0.0.5",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-6to5": "^3.0.0",
