@@ -1,6 +1,6 @@
-define(['angular', 'common/components/modal', './forms.tpl'], function(angular){
+define(['angular', 'common/components/modal', './forms.tpl', 'common/components/select'], function(angular){
 
-  var formModule = angular.module('forms', ['app/forms/forms.tpl.html', 'common.components.modal']);
+  var formModule = angular.module('forms', ['app/forms/forms.tpl.html', 'common.components.modal', 'common.components.select']);
 
   formModule.config(function($stateProvider){
     $stateProvider.state('forms', {

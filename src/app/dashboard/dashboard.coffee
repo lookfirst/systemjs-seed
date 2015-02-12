@@ -1,7 +1,8 @@
 `import angular from 'angular'`
 `import './dashboards.tpl'`
+`import {selectModule} from 'common/components/select'`
 
-dashboardModule = angular.module('dashboard', ['app/dashboard/dashboards.tpl.html'])
+dashboardModule = angular.module('dashboard', [selectModule.name, 'app/dashboard/dashboards.tpl.html'])
 
 dashboardModule.config ($stateProvider) ->
   $stateProvider.state('dashboards', {
@@ -10,7 +11,7 @@ dashboardModule.config ($stateProvider) ->
     controller: 'DashboardCtrl'
   })
 
-dashboardModule.controller 'DashboardCtrl', ($scope) ->
+dashboardModule.controller 'DashboardCtrl', ->
   console.log('dashboard!')
 
 `export default dashboardModule`
