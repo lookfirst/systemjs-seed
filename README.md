@@ -28,6 +28,7 @@ In addition it also:
 - Enables override of port number with environment
 - index.html is based on a template
 - Adds support for ngReact (TODO)
+- Enables Angular html5Mode by default
 
 ### Install & Run
 
