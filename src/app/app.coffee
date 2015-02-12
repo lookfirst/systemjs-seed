@@ -10,7 +10,7 @@ module = angular.module('seed', ['ui.router', 'oc.lazyLoad' ])
 module.config(routing(module))
 
 module.config(($urlRouterProvider, $locationProvider, $stateProvider, $httpProvider) ->
-	#$locationProvider.html5Mode(true)
+	$locationProvider.html5Mode(true)
 	$httpProvider.useApplyAsync(true)
 	$urlRouterProvider.otherwise('/login')
 )
