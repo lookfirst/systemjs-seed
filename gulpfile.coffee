@@ -273,7 +273,7 @@ gulp.task 'serve', (done) ->
 	browserSync(serverOptions, done)
 
 gulp.task 'watch', ->
-	watcher = gulp.watch(['src'], ['compile'])
+	watcher = gulp.watch(['./src/**'], ['compile'])
 	watcher.on('change', (event) ->
 		console.log("File #{event.path} was #{event.type}, running tasks...")
 	)
