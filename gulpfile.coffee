@@ -206,10 +206,7 @@ gulp.task 'es6', ->
 		.pipe(changed(path.output, { extension: '.js' }))
 		.pipe(sourcemaps.init())
 		.pipe(to5(compilerOptions))
-		.pipe(ngAnnotate({
-			sourceMap: true,
-			gulpWarnings: false
-		}))
+		.pipe(ngAnnotate({ sourceMap: true }))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(path.output))
 		.pipe(browserSync.reload({ stream: true }))
@@ -220,12 +217,9 @@ gulp.task 'es6-coffee', ->
 		.pipe(plumber())
 		.pipe(changed(path.output, { extension: '.coffee' }))
 		.pipe(sourcemaps.init())
-		.pipe(coffee({bare: true}).on('error', gutil.log))
+		.pipe(coffee({ bare: true }).on('error', gutil.log))
 		.pipe(to5(compilerOptions))
-		.pipe(ngAnnotate({
-			sourceMap: true,
-			gulpWarnings: false
-		}))
+		.pipe(ngAnnotate({ sourceMap: true }))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(path.output))
 		.pipe(browserSync.reload({ stream: true }))
