@@ -256,7 +256,7 @@ gulp.task 'json', ->
 gulp.task 'minify', ->
 	gulp.src(['dist/**/*.js'])
 		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(uglify({mangle: false}))
+		.pipe(uglify({ mangle: true }))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(path.output))
 
