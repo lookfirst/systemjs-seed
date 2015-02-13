@@ -2,8 +2,6 @@
 `import 'angular-ui-router'`
 `import 'ocLazyLoad'`
 `import {routing} from 'common/utils/routing'`
-`import 'common/core'`
-`import 'bower_components/plugin-css/css'`
 
 module = angular.module('seed', ['ui.router', 'oc.lazyLoad' ])
 
