@@ -102,6 +102,7 @@ gulp.task 'release', (callback) ->
 		'compile'
 		'cache-bust'
 		'build'
+		'minify'
 		callback
 	)
 
@@ -282,7 +283,7 @@ gulp.task 'watch', ->
 		console.log("File #{event.path} was #{event.type}, running tasks...")
 	)
 
-gulp.task 'build', (done) ->
+gulp.task 'build', ->
 	routes = routes.map( (r) -> r.src )
 
 	config =
@@ -295,8 +296,4 @@ gulp.task 'build', (done) ->
 		dest: 'dist/app'
 		destJs: 'dist/app/app.js'
 
-	routeBundler.build(config).then( ->
-		console.log('done building routes')
-		done()
-	)
-	return
+	routeBundler.build(config)

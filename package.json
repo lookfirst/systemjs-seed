@@ -36,7 +36,7 @@
     "node-v8-clone": "^0.6.2",
     "rsvp": "^3.0.16",
     "run-sequence": "^1.0.2",
-    "systemjs-route-bundler": "^1.0.3",
+    "systemjs-route-bundler": "^1.0.4",
     "vinyl-paths": "^1.0.0"
   },
   "dependencies": {},
