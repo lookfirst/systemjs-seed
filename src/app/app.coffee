@@ -17,6 +17,6 @@ module.config(($urlRouterProvider, $locationProvider, $stateProvider, $httpProvi
 
 angular.element(document).ready( ->
 	angular.bootstrap(document.body, [ module.name ], {
-		# strictDi: true # turning off for now
+		strictDi: true
 	})
 )
