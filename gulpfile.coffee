@@ -246,6 +246,7 @@ gulp.task 'move', ->
 		'./src/**/*.ttf'
 		'./src/**/*.png'
 		'./src/**/*.ico'
+		'./src/**/*.gif'
 		'./src/**/*.jpg'
 		'./src/**/*.eot'
 	])
