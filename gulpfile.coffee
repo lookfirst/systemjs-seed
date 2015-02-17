@@ -1,7 +1,7 @@
 gulp = require('gulp')
 gutil = require('gulp-util')
 changed = require('gulp-changed')
-to5 = require('gulp-6to5')
+to5 = require('gulp-babel')
 insert = require('gulp-insert')
 cache = require('gulp-cached')
 sourcemaps = require('gulp-sourcemaps')
@@ -53,7 +53,7 @@ compilerOptions =
 	sourceRoot: ''
 	moduleRoot: ''
 	moduleIds: false
-	runtime: false
+	externalHelpers: false
 	experimental: false
 	format:
 		comments: false
