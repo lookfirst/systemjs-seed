@@ -153,7 +153,6 @@ gulp.task 'cache-bust', ->
 
 gulp.task 'test', ['recompile'], (done) ->
 	karma.start({
-		basePath: '.'
 		configFile: __dirname + '/karma.conf.js'
 	}, done)
 

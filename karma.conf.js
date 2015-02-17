@@ -42,9 +42,7 @@ module.exports = function(config) {
     },
 
     proxies: {
-      '/base/app/': '/base/dist/app/',
-      '/base/common/': '/base/dist/common/',
-      '/bower_components/': '/base/bower_components/'
+      '/base/dist': '/base'
     },
 
     // list of files to exclude
