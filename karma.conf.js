@@ -31,18 +31,20 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      config: './system.config.js',
-      loadFiles: ['dist/**/*.spec.js'],
+      config: './dist/system.config.js',
+      loadFiles: ['./dist/**/*.spec.js'],
       serveFiles: [
-        'dist/**/*.js',
-        'dist/**/*.css',
+        'dist/**/**',
         'bower_components/**/*.js',
-        'bower_components/**/*.css'
+        'bower_components/**/*.css',
+        'jspm_packages/**/*.js',
+        'jspm_packages/**/*.css'
       ]
     },
 
     proxies: {
-      '/base/dist': '/base'
+      '/bower_components': '/base/bower_components',
+      '/jspm_packages': '/base/jspm_packages'
     },
 
     // list of files to exclude

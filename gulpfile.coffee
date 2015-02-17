@@ -39,6 +39,11 @@ serverOptionsProd =
 	codeSync: false
 	reloadOnRestart: false
 	port: process.env.PORT || 9000
+	server: {
+		routes: {
+			'/jspm_packages': './jspm_packages'
+		}
+	}
 
 serverOptionsDev =
 	open: false
@@ -46,6 +51,12 @@ serverOptionsDev =
 	notify: false
 	ghostMode: false
 	port: process.env.PORT || 9000
+	server: {
+		routes: {
+			'/jspm_packages': './jspm_packages'
+			'/bower_components': './bower_components'
+		}
+	}
 
 compilerOptions =
 	filename: ''
@@ -85,11 +96,7 @@ path =
 	themesOutput: 'dist/theme/'
 	output: 'dist/'
 	routes: './src/app/routes.json'
-	minify: [
-		'dist/**/*.js'
-		'!dist/jspm_packages/**'
-		'!dist/bower_components/**'
-	]
+	minify: ['dist/**/*.js']
 
 routes = require(path.routes)
 
@@ -111,10 +118,7 @@ gulp.task 'release', (callback) ->
 		'clean'
 		'compile'
 		'cache-bust'
-		'symlink-bower_components'
-		'symlink-jspm_packages'
 		'build'
-		'minify'
 		callback
 	)
 
@@ -122,8 +126,6 @@ gulp.task 'dev', (callback) ->
 	serverOptions = serverOptionsDev
 	runSequence(
 		'recompile'
-		'symlink-jspm_packages'
-		'symlink-bower_components'
 		'index.html'
 		'serve'
 		'watch'
@@ -137,12 +139,6 @@ gulp.task 'prod', (callback) ->
 		'serve'
 		callback
 	)
-
-gulp.task 'symlink-jspm_packages', (done) ->
-	fs.symlink('../jspm_packages', "#{path.output}/jspm_packages", 'dir', done)
-
-gulp.task 'symlink-bower_components', (done) ->
-	fs.symlink('../bower_components', "#{path.output}/bower_components", 'dir', done)
 
 gulp.task 'index.html', ->
 	gulp.src('./src/index.tpl.html')
@@ -279,14 +275,8 @@ gulp.task 'lint', ->
 		.pipe(jshint.reporter(stylish))
 
 gulp.task 'serve', (done) ->
-	acao = (req, res, next) ->
-		res.setHeader('Access-Control-Allow-Origin', '*')
-		next()
-
-	serverOptions.server = {
-		baseDir: [path.output]
-		middleware: [historyApiFallback, acao]
-	}
+	serverOptions.server.baseDir = [path.output]
+	serverOptions.server.middleware = [historyApiFallback]
 
 	browserSync(serverOptions, done)
 

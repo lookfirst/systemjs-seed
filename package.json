@@ -42,7 +42,9 @@
   "dependencies": {},
   "jspm": {
     "directories": {
-      "lib": "src"
+      "baseURL": "dist",
+      "lib": "src",
+      "packages": "jspm_packages"
     },
     "configFile": "src/system.config.js",
     "dependencies": {

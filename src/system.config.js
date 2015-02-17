@@ -1,10 +1,11 @@
 System.config({
-  "baseURL": "",
+  "baseURL": ".",
+  "transpiler": "6to5",
   "paths": {
     "*": "*.js",
-    "bower_components/*": "bower_components/*.js",
-    "github:*": "jspm_packages/github/*.js",
-    "npm:*": "jspm_packages/npm/*.js",
+    "bower_components/*": "../bower_components/*.js",
+    "github:*": "../jspm_packages/github/*.js",
+    "npm:*": "../jspm_packages/npm/*.js",
     "systemjs-seed/*": "src/*.js"
   },
   "buildCSS": true,
@@ -194,4 +195,3 @@ System.config({
     }
   }
 });
-
