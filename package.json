@@ -44,7 +44,7 @@
     "directories": {
       "lib": "src"
     },
-    "configFile": "system.config.js",
+    "configFile": "src/system.config.js",
     "dependencies": {
       "css": "^0.1.5",
       "json": "^0.1.0"

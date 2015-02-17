@@ -1,3 +1,5 @@
+fs = require('fs')
+
 gulp = require('gulp')
 gutil = require('gulp-util')
 changed = require('gulp-changed')
@@ -68,7 +70,10 @@ path =
 	source: 'src/**/*.js'
 	coffee: 'src/**/*.coffee'
 	html: '**/*.html'
-	templates: 'src/**/*.tpl.html'
+	templates: [
+		'src/**/*.tpl.html'
+		'!src/index.tpl.html'
+	]
 	less: [
 		'src/**/*.less'
 		'!src/assets/**/*.less'
@@ -80,6 +85,11 @@ path =
 	themesOutput: 'dist/theme/'
 	output: 'dist/'
 	routes: './src/app/routes.json'
+	minify: [
+		'dist/**/*.js'
+		'!dist/jspm_packages/**'
+		'!dist/bower_components/**'
+	]
 
 routes = require(path.routes)
 
@@ -101,6 +111,8 @@ gulp.task 'release', (callback) ->
 		'clean'
 		'compile'
 		'cache-bust'
+		'symlink-bower_components'
+		'symlink-jspm_packages'
 		'build'
 		'minify'
 		callback
@@ -110,6 +122,8 @@ gulp.task 'dev', (callback) ->
 	serverOptions = serverOptionsDev
 	runSequence(
 		'recompile'
+		'symlink-jspm_packages'
+		'symlink-bower_components'
 		'index.html'
 		'serve'
 		'watch'
@@ -124,13 +138,19 @@ gulp.task 'prod', (callback) ->
 		callback
 	)
 
+gulp.task 'symlink-jspm_packages', (done) ->
+	fs.symlink('../jspm_packages', "#{path.output}/jspm_packages", 'dir', done)
+
+gulp.task 'symlink-bower_components', (done) ->
+	fs.symlink('../bower_components', "#{path.output}/bower_components", 'dir', done)
+
 gulp.task 'index.html', ->
-	gulp.src('./index.tpl.html')
-		.pipe(rename('./index.html'))
-		.pipe(gulp.dest('./'))
+	gulp.src('./src/index.tpl.html')
+		.pipe(rename('index.html'))
+		.pipe(gulp.dest(path.output))
 
 gulp.task 'cache-bust', ->
-	gulp.src('./index.tpl.html')
+	gulp.src('./src/index.tpl.html')
 		.pipe(replace({
 				usePrefix: false,
 				patterns: [
@@ -148,8 +168,8 @@ gulp.task 'cache-bust', ->
 					}
 				]
 			}))
-		.pipe(rename('./index.html'))
-		.pipe(gulp.dest('./'))
+		.pipe(rename('index.html'))
+		.pipe(gulp.dest(path.output))
 
 gulp.task 'test', ['recompile'], (done) ->
 	karma.start({
@@ -247,7 +267,7 @@ gulp.task 'json', ->
 		.pipe(browserSync.reload({ stream: true }))
 
 gulp.task 'minify', ->
-	gulp.src(['dist/**/*.js'])
+	gulp.src(path.minify)
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify({ mangle: true }))
 		.pipe(sourcemaps.write('.'))
@@ -264,7 +284,7 @@ gulp.task 'serve', (done) ->
 		next()
 
 	serverOptions.server = {
-		baseDir: ['.']
+		baseDir: [path.output]
 		middleware: [historyApiFallback, acao]
 	}
 
@@ -280,10 +300,11 @@ gulp.task 'build', ->
 	routes = routes.map( (r) -> r.src )
 
 	config =
+		baseURL: path.output
 		main: 'app/app'
 		routes: routes
 		bundleThreshold: 0.6
-		config: './system.config.js'
+		config: './src/system.config.js'
 		sourceMaps: true
 		minify: false
 		dest: 'dist/app'

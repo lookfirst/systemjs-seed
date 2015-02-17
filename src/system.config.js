@@ -1,7 +1,7 @@
 System.config({
   "baseURL": "",
   "paths": {
-    "*": "dist/*.js",
+    "*": "*.js",
     "bower_components/*": "bower_components/*.js",
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js",
