@@ -30,7 +30,7 @@ loginModule.controller('LoginController', $scope => {
   $scope.$watch('theme', function(newVal, oldVal){
     if(!newVal) return;
 
-    System.import('theme/' + newVal + '.css!').then(() => {
+    System.import('assets/themes/' + newVal + '.css!').then(() => {
       angular.element(document.body).addClass(newVal).removeClass(oldVal);
     });
 

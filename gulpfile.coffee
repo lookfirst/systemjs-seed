@@ -90,10 +90,10 @@ path =
 		'!src/assets/**/*.less'
 	]
 	themes: [
-		'src/theme/dark.less'
-		'src/theme/light.less'
+		'src/assets/themes/dark.less'
+		'src/assets/themes/light.less'
 	]
-	themesOutput: 'dist/theme/'
+	themesOutput: 'dist/assets/themes/'
 	output: 'dist/'
 	routes: './src/app/routes.json'
 	minify: ['dist/**/*.js']
