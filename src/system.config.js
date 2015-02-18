@@ -6,7 +6,7 @@ System.config({
     "bower_components/*": "../bower_components/*.js",
     "github:*": "../jspm_packages/github/*.js",
     "npm:*": "../jspm_packages/npm/*.js",
-    "systemjs-seed/*": "src/*.js"
+    "systemjs-seed/*": "../src/*.js"
   },
   "buildCSS": true,
   "separateCSS": false
@@ -195,3 +195,4 @@ System.config({
     }
   }
 });
+
