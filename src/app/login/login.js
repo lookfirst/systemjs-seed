@@ -3,13 +3,13 @@ import {selectModule} from 'common/components/select';
 import {dateModule} from 'common/components/date';
 import {modalModule} from 'common/components/modal';
 import {userModule} from 'common/services/user';
-import './login.tpl';
-import './signup.tpl';
+import loginTpl from 'app/login/login.tpl';
+import signupTpl from 'app/login/signup.tpl';
 import './login.css!';
 
 
 export var loginModule = angular.module('login', [selectModule.name, dateModule.name, modalModule.name, userModule.name,
-  'app/login/login.tpl.html', 'app/login/signup.tpl.html']);
+  loginTpl.name, signupTpl.name]);
 
 loginModule.config(function($stateProvider){
   $stateProvider.state('login', {
