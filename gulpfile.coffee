@@ -136,6 +136,7 @@ gulp.task 'prod', (callback) ->
 	serverOptions = serverOptionsProd
 	runSequence(
 		'release'
+		'minify'
 		'serve'
 		callback
 	)
