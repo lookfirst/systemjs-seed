@@ -1,11 +1,11 @@
 import angular from 'angular';
-import './admin.tpl';
+import adminTpl from 'app/admin/admin.tpl';
 import {builderModule} from './builder/builder';
 import {usersModule} from './users/users';
 
 
 export var adminModule = angular.module('admin', [ 
-  builderModule.name, usersModule.name, 'app/admin/admin.tpl.html']);
+  builderModule.name, usersModule.name, adminTpl.name]);
 
 adminModule.config(function($stateProvider){
   $stateProvider.state('admin', {

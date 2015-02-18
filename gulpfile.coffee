@@ -1,7 +1,9 @@
+fs = require('fs')
+
 gulp = require('gulp')
 gutil = require('gulp-util')
 changed = require('gulp-changed')
-to5 = require('gulp-6to5')
+to5 = require('gulp-babel')
 insert = require('gulp-insert')
 cache = require('gulp-cached')
 sourcemaps = require('gulp-sourcemaps')
@@ -37,6 +39,11 @@ serverOptionsProd =
 	codeSync: false
 	reloadOnRestart: false
 	port: process.env.PORT || 9000
+	server: {
+		routes: {
+			'/jspm_packages': './jspm_packages'
+		}
+	}
 
 serverOptionsDev =
 	open: false
@@ -44,6 +51,12 @@ serverOptionsDev =
 	notify: false
 	ghostMode: false
 	port: process.env.PORT || 9000
+	server: {
+		routes: {
+			'/jspm_packages': './jspm_packages'
+			'/bower_components': './bower_components'
+		}
+	}
 
 compilerOptions =
 	filename: ''
@@ -53,7 +66,7 @@ compilerOptions =
 	sourceRoot: ''
 	moduleRoot: ''
 	moduleIds: false
-	runtime: false
+	externalHelpers: false
 	experimental: false
 	format:
 		comments: false
@@ -68,18 +81,22 @@ path =
 	source: 'src/**/*.js'
 	coffee: 'src/**/*.coffee'
 	html: '**/*.html'
-	templates: 'src/**/*.tpl.html'
+	templates: [
+		'src/**/*.tpl.html'
+		'!src/index.tpl.html'
+	]
 	less: [
 		'src/**/*.less'
 		'!src/assets/**/*.less'
 	]
 	themes: [
-		'src/theme/dark.less'
-		'src/theme/light.less'
+		'src/assets/themes/dark.less'
+		'src/assets/themes/light.less'
 	]
-	themesOutput: 'dist/theme/'
+	themesOutput: 'dist/assets/themes/'
 	output: 'dist/'
 	routes: './src/app/routes.json'
+	minify: ['dist/**/*.js']
 
 routes = require(path.routes)
 
@@ -102,7 +119,6 @@ gulp.task 'release', (callback) ->
 		'compile'
 		'cache-bust'
 		'build'
-		'minify'
 		callback
 	)
 
@@ -120,17 +136,18 @@ gulp.task 'prod', (callback) ->
 	serverOptions = serverOptionsProd
 	runSequence(
 		'release'
+		'minify'
 		'serve'
 		callback
 	)
 
 gulp.task 'index.html', ->
-	gulp.src('./index.tpl.html')
-		.pipe(rename('./index.html'))
-		.pipe(gulp.dest('./'))
+	gulp.src('./src/index.tpl.html')
+		.pipe(rename('index.html'))
+		.pipe(gulp.dest(path.output))
 
 gulp.task 'cache-bust', ->
-	gulp.src('./index.tpl.html')
+	gulp.src('./src/index.tpl.html')
 		.pipe(replace({
 				usePrefix: false,
 				patterns: [
@@ -148,8 +165,8 @@ gulp.task 'cache-bust', ->
 					}
 				]
 			}))
-		.pipe(rename('./index.html'))
-		.pipe(gulp.dest('./'))
+		.pipe(rename('index.html'))
+		.pipe(gulp.dest(path.output))
 
 gulp.task 'test', ['recompile'], (done) ->
 	karma.start({
@@ -170,7 +187,7 @@ gulp.task 'html', ->
 			spare: true
 			quotes: true
 		}))
-		.pipe(ngHtml2Js())
+		.pipe(ngHtml2Js({export: 'commonjs'}))
 		.pipe(insert.prepend("import angular from 'angular';\n"))
 		.pipe(to5(compilerOptions))
 		.pipe(gulp.dest(path.output))
@@ -230,6 +247,7 @@ gulp.task 'move', ->
 		'./src/**/*.ttf'
 		'./src/**/*.png'
 		'./src/**/*.ico'
+		'./src/**/*.gif'
 		'./src/**/*.jpg'
 		'./src/**/*.eot'
 	])
@@ -247,7 +265,7 @@ gulp.task 'json', ->
 		.pipe(browserSync.reload({ stream: true }))
 
 gulp.task 'minify', ->
-	gulp.src(['dist/**/*.js'])
+	gulp.src(path.minify)
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify({ mangle: true }))
 		.pipe(sourcemaps.write('.'))
@@ -259,14 +277,8 @@ gulp.task 'lint', ->
 		.pipe(jshint.reporter(stylish))
 
 gulp.task 'serve', (done) ->
-	acao = (req, res, next) ->
-		res.setHeader('Access-Control-Allow-Origin', '*')
-		next()
-
-	serverOptions.server = {
-		baseDir: ['.']
-		middleware: [historyApiFallback, acao]
-	}
+	serverOptions.server.baseDir = [path.output]
+	serverOptions.server.middleware = [historyApiFallback]
 
 	browserSync(serverOptions, done)
 
@@ -280,10 +292,11 @@ gulp.task 'build', ->
 	routes = routes.map( (r) -> r.src )
 
 	config =
+		baseURL: path.output
 		main: 'app/app'
 		routes: routes
 		bundleThreshold: 0.6
-		config: './system.config.js'
+		config: './src/system.config.js'
 		sourceMaps: true
 		minify: false
 		dest: 'dist/app'

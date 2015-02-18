@@ -1,8 +1,8 @@
 `import angular from 'angular'`
-`import './dashboards.tpl'`
+`import dashboardsTpl from 'app/dashboard/dashboards.tpl'`
 `import {selectModule} from 'common/components/select'`
 
-dashboardModule = angular.module('dashboard', [selectModule.name, 'app/dashboard/dashboards.tpl.html'])
+dashboardModule = angular.module('dashboard', [selectModule.name, dashboardsTpl.name])
 
 dashboardModule.config ($stateProvider) ->
   $stateProvider.state('dashboards', {

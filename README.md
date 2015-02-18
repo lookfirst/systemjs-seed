@@ -24,9 +24,11 @@ In addition it also:
 - Adds support for CoffeeScript
 - Uses CS for the gulpfile
 - Adds `dev` and `prod` gulp targets
+- Project is served entirely from the `dist` folder as a root
 - Fixes a bunch of misc small build file and lint issues
 - Enables override of port number with environment
 - index.html is based on a template
+- Templates are exported modules and can be referred to by name
 - Adds support for ngReact (TODO)
 - Enables Angular html5Mode by default
 
