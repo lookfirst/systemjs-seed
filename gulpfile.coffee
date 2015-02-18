@@ -186,7 +186,7 @@ gulp.task 'html', ->
 			spare: true
 			quotes: true
 		}))
-		.pipe(ngHtml2Js())
+		.pipe(ngHtml2Js({export: 'commonjs'}))
 		.pipe(insert.prepend("import angular from 'angular';\n"))
 		.pipe(to5(compilerOptions))
 		.pipe(gulp.dest(path.output))
