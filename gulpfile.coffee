@@ -2,9 +2,9 @@ fs = require('fs')
 
 gulp = require('gulp')
 
-gulp_helpers = require('gulp-helpers')
-taskMaker = gulp_helpers.taskMaker(gulp)
-situation = gulp_helpers.situation()
+gulpHelpers = require('gulp-helpers')
+taskMaker = gulpHelpers.taskMaker(gulp)
+situation = gulpHelpers.situation()
 
 runSequence = require('run-sequence')
 
