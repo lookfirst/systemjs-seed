@@ -148,7 +148,7 @@ gulp.task 'run', (callback) ->
 			'recompile'
 			'routeBundler'
 			'cache-bust'
-#			'minify'
+			'minify'
 			'serve'
 			callback
 		)
