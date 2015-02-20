@@ -1,6 +1,6 @@
 System.config({
   "baseURL": ".",
-  "transpiler": "6to5",
+  "transpiler": "babel",
   "paths": {
     "*": "*.js",
     "bower_components/*": "../bower_components/*.js",
