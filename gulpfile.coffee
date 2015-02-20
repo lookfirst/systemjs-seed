@@ -114,7 +114,7 @@ taskMaker.defineTask('ngHtml2Js', { taskName: 'html', src: path.templates, dest:
 taskMaker.defineTask('copy', { src: path.assets, dest: path.output })
 taskMaker.defineTask('copy', { taskName: 'json', src: path.json, dest: path.output, changed: { extension: '.json' } })
 taskMaker.defineTask('copy', { taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html' })
-taskMaker.defineTask('copy', { taskName: 'cache-bust', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig })
+taskMaker.defineTask('copy', { taskName: 'cache-bust-index.html', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig })
 taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile', 'index.html'] })
 taskMaker.defineTask('minify', { src: path.minify, dest: path.output })
 taskMaker.defineTask('jshint', { taskName: 'lint', src: path.source })
@@ -147,7 +147,7 @@ gulp.task 'run', (callback) ->
 		runSequence(
 			'recompile'
 			'routeBundler'
-			'cache-bust'
+			'cache-bust-index.html'
 			'minify'
 			'serve'
 			callback
