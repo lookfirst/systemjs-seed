@@ -161,7 +161,6 @@ gulp.task 'run', (callback) ->
 	else if situation.isDevelopment()
 		runSequence(
 			'recompile'
-			'index.html'
 			'serve'
 			'watch'
 			callback
