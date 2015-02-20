@@ -31,8 +31,8 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      config: './dist/system.config.js',
-      loadFiles: ['./dist/**/*.spec.js'],
+      config: 'dist/system.config.js',
+      loadFiles: ['dist/**/*.spec.js'],
       serveFiles: [
         'dist/**/**',
         'bower_components/**/*.js',
