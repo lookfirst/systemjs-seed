@@ -115,7 +115,7 @@ taskMaker.defineTask('copy', { src: path.assets, dest: path.output })
 taskMaker.defineTask('copy', { taskName: 'json', src: path.json, dest: path.output, changed: { extension: '.json' } })
 taskMaker.defineTask('copy', { taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html' })
 taskMaker.defineTask('copy', { taskName: 'cache-bust', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig })
-taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile'] })
+taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile', 'index.html'] })
 taskMaker.defineTask('minify', { src: path.minify, dest: path.output })
 taskMaker.defineTask('jshint', { taskName: 'lint', src: path.source })
 taskMaker.defineTask('karma', { configFile: path.karmaConfig })
@@ -124,7 +124,7 @@ taskMaker.defineTask('routeBundler', { config: routeBundleConfig })
 
 gulp.task 'compile', (callback) ->
 	runSequence(
-		['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'copy', 'index.html']
+		['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'copy']
 		callback
 	)
 
@@ -142,18 +142,12 @@ gulp.task 'test', (callback) ->
 		callback
 	)
 
-gulp.task 'release', (callback) ->
-	runSequence(
-		'recompile'
-		'cache-bust'
-		'routeBundler'
-		callback
-	)
-
 gulp.task 'run', (callback) ->
 	if situation.isProduction()
 		runSequence(
-			'release'
+			'recompile'
+			'routeBundler'
+			'cache-bust'
 #			'minify'
 			'serve'
 			callback
@@ -161,6 +155,7 @@ gulp.task 'run', (callback) ->
 	else if situation.isDevelopment()
 		runSequence(
 			'recompile'
+			'index.html'
 			'serve'
 			'watch'
 			callback
