@@ -36,14 +36,14 @@ In addition it also:
 
 1. `npm install -g gulp jspm bower`
 2. `npm install`
-3. `gulp dev`
+3. `gulp run`
 4. Browse to `http://localhost:9000`
 
 ### Gulp Tasks
 
 - `gulp test` to run karma tests
 - `gulp lint` to run jshint
-- `gulp prod` to bundle, cache bust, and minify
+- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode
 
 ### Tooling
 

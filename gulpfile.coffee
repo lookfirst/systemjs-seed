@@ -1,81 +1,12 @@
 fs = require('fs')
 
 gulp = require('gulp')
-gutil = require('gulp-util')
-changed = require('gulp-changed')
-to5 = require('gulp-babel')
-insert = require('gulp-insert')
-cache = require('gulp-cached')
-sourcemaps = require('gulp-sourcemaps')
-ngHtml2Js = require('gulp-ng-html2js')
-htmlMin = require('gulp-minify-html')
-uglify = require('gulp-uglify')
-plumber = require('gulp-plumber')
-coffee = require('gulp-coffee')
-less = require('gulp-less')
-ngAnnotate = require('gulp-ng-annotate')
-jshint = require('gulp-jshint')
-rename = require('gulp-rename')
-replace = require('gulp-replace-task')
 
-karma = require('karma').server
-stylish = require('jshint-stylish')
-lessPluginCleanCSS = require('less-plugin-clean-css')
-cleancss = new lessPluginCleanCSS({advanced: true})
-browserSync = require('browser-sync')
+gulp_helpers = require('gulp-helpers')
+taskMaker = gulp_helpers.taskMaker(gulp)
+situation = gulp_helpers.situation()
+
 runSequence = require('run-sequence')
-vinylPaths = require('vinyl-paths')
-RSVP = require('rsvp')
-del = require('del')
-routeBundler = require('systemjs-route-bundler')
-historyApiFallback = require('connect-history-api-fallback')
-
-serverOptions = {}
-serverOptionsProd =
-	open: false
-	ui: false
-	notify: false
-	ghostMode: false
-	codeSync: false
-	reloadOnRestart: false
-	port: process.env.PORT || 9000
-	server: {
-		routes: {
-			'/jspm_packages': './jspm_packages'
-		}
-	}
-
-serverOptionsDev =
-	open: false
-	ui: false
-	notify: false
-	ghostMode: false
-	port: process.env.PORT || 9000
-	server: {
-		routes: {
-			'/jspm_packages': './jspm_packages'
-			'/bower_components': './bower_components'
-		}
-	}
-
-compilerOptions =
-	filename: ''
-	filenameRelative: ''
-	blacklist: []
-	whitelist: []
-	sourceRoot: ''
-	moduleRoot: ''
-	moduleIds: false
-	externalHelpers: false
-	experimental: false
-	format:
-		comments: false
-		compact: false
-		indent:
-			parentheses: true
-			adjustMultilineComment: true
-			style: '  '
-			base: 0
 
 path =
 	source: 'src/**/*.js'
@@ -97,12 +28,103 @@ path =
 	output: 'dist/'
 	routes: './src/app/routes.json'
 	minify: ['dist/**/*.js']
+	assets: [
+		'./src/**/*.svg'
+		'./src/**/*.woff'
+		'./src/**/*.ttf'
+		'./src/**/*.png'
+		'./src/**/*.ico'
+		'./src/**/*.gif'
+		'./src/**/*.jpg'
+		'./src/**/*.eot'
+	]
+	json: './src/**/*.json'
+	index: './src/index.tpl.html'
+	watch: './src/**'
+	karmaConfig: __dirname + '/karma.conf.js'
+
+if situation.isProduction()
+	serverOptions =
+		open: false
+		ui: false
+		notify: false
+		ghostMode: false
+		codeSync: false
+		reloadOnRestart: false
+		port: process.env.PORT || 9000
+		server: {
+			baseDir: [path.output]
+			routes: {
+				'/jspm_packages': './jspm_packages'
+			}
+		}
+else if situation.isDevelopment()
+	serverOptions =
+		open: false
+		ui: false
+		notify: false
+		ghostMode: false
+		port: process.env.PORT || 9000
+		server: {
+			baseDir: [path.output]
+			routes: {
+				'/jspm_packages': './jspm_packages'
+				'/bower_components': './bower_components'
+			}
+	}
+
+cacheBustConfig =
+	usePrefix: false,
+	patterns: [
+		{
+			match: '<!-- PROD'
+			replacement: ''
+		},
+		{
+			match: 'END -->'
+			replacement: ''
+		},
+		{
+			match: '{{hash}}'
+			replacement: Math.round(new Date() / 1000)
+		}
+	]
+
 
 routes = require(path.routes)
+routesSrc = routes.map( (r) -> r.src )
+routeBundleConfig =
+	baseURL: path.output
+	main: 'app/app'
+	routes: routesSrc
+	bundleThreshold: 0.6
+	config: './src/system.config.js'
+	sourceMaps: true
+	minify: false
+	dest: 'dist/app'
+	destJs: 'dist/app/app.js'
+
+
+taskMaker.defineTask('clean', { path: path.output })
+taskMaker.defineTask('less', { path: path.less, output: path.output })
+taskMaker.defineTask('less', { taskName: 'less-themes', path: path.themes, output: path.themesOutput })
+taskMaker.defineTask('es6', { source: path.source, output: path.output })
+taskMaker.defineTask('es6', { taskName: 'es6-coffee', source: path.coffee, output: path.output, coffee: true })
+taskMaker.defineTask('ngHtml2Js', { taskName: 'html', templates: path.templates, output: path.output })
+taskMaker.defineTask('copy', { path: path.assets, output: path.output })
+taskMaker.defineTask('copy', { taskName: 'json', path: path.json, output: path.output, changed: { extension: '.json' } })
+taskMaker.defineTask('copy', { taskName: 'index.html', path: path.index, output: path.output, rename: 'index.html' })
+taskMaker.defineTask('copy', { taskName: 'cache-bust', path: path.index, output: path.output, rename: 'index.html', replace: cacheBustConfig })
+taskMaker.defineTask('watch', { path: path.watch, tasks: ['compile'] })
+taskMaker.defineTask('minify', { path: path.minify, output: path.output })
+taskMaker.defineTask('jshint', { taskName: 'lint', path: path.source })
+taskMaker.defineTask('karma', { configFile: path.karmaConfig })
+taskMaker.defineTask('browserSync', { taskName: 'serve', config: serverOptions, historyApiFallback: true })
+taskMaker.defineTask('routeBundler', { config: routeBundleConfig })
 
 gulp.task 'compile', (callback) ->
 	runSequence(
-		['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'move'],
+		['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'copy', 'index.html']
 		callback
 	)
 
@@ -113,193 +135,34 @@ gulp.task 'recompile', (callback) ->
 		callback
 	)
 
-gulp.task 'release', (callback) ->
-	runSequence(
-		'clean'
-		'compile'
-		'cache-bust'
-		'build'
-		callback
-	)
-
-gulp.task 'dev', (callback) ->
-	serverOptions = serverOptionsDev
+gulp.task 'test', (callback) ->
 	runSequence(
 		'recompile'
-		'index.html'
-		'serve'
-		'watch'
+		'karma'
 		callback
 	)
 
-gulp.task 'prod', (callback) ->
-	serverOptions = serverOptionsProd
+gulp.task 'release', (callback) ->
 	runSequence(
-		'release'
-		'minify'
-		'serve'
+		'recompile'
+		'cache-bust'
+		'routeBundler'
 		callback
 	)
 
-gulp.task 'index.html', ->
-	gulp.src('./src/index.tpl.html')
-		.pipe(rename('index.html'))
-		.pipe(gulp.dest(path.output))
-
-gulp.task 'cache-bust', ->
-	gulp.src('./src/index.tpl.html')
-		.pipe(replace({
-				usePrefix: false,
-				patterns: [
-					{
-						match: '<!-- PROD',
-						replacement: ''
-					},
-					{
-						match: 'END -->',
-						replacement: ''
-					},
-					{
-						match: '{{hash}}',
-						replacement: Math.round(new Date() / 1000)
-					}
-				]
-			}))
-		.pipe(rename('index.html'))
-		.pipe(gulp.dest(path.output))
-
-gulp.task 'test', ['recompile'], (done) ->
-	karma.start({
-		configFile: __dirname + '/karma.conf.js'
-	}, done)
-
-gulp.task 'clean', ->
-	gulp.src([ path.output ])
-		.pipe(vinylPaths(del))
-
-gulp.task 'html', ->
-	gulp.src(path.templates)
-		.pipe(cache('html'))
-		.pipe(plumber())
-		.pipe(changed(path.output, { extension: '.html' }))
-		.pipe(htmlMin({
-			empty: true
-			spare: true
-			quotes: true
-		}))
-		.pipe(ngHtml2Js({export: 'commonjs'}))
-		.pipe(insert.prepend("import angular from 'angular';\n"))
-		.pipe(to5(compilerOptions))
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'less', ->
-	gulp.src(path.less)
-		.pipe(cache('less'))
-		.pipe(plumber())
-		.pipe(changed(path.output, {extension: '.less'}))
-		.pipe(sourcemaps.init())
-		.pipe(less({plugins: [ cleancss ]}))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'less-themes', ->
-	gulp.src(path.themes)
-		.pipe(cache('less-themes'))
-		.pipe(plumber())
-		.pipe(changed(path.output, {extension: '.less'}))
-		.pipe(sourcemaps.init())
-		.pipe(less({plugins: [ cleancss ]}))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(path.themesOutput))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'es6', ->
-	gulp.src(path.source)
-		.pipe(cache('es6'))
-		.pipe(plumber())
-		.pipe(changed(path.output, { extension: '.js' }))
-		.pipe(sourcemaps.init())
-		.pipe(to5(compilerOptions))
-		.pipe(ngAnnotate({ sourceMap: true }))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'es6-coffee', ->
-	gulp.src(path.coffee)
-		.pipe(cache('es6-coffee'))
-		.pipe(plumber())
-		.pipe(changed(path.output, { extension: '.coffee' }))
-		.pipe(sourcemaps.init())
-		.pipe(coffee({ bare: true }).on('error', gutil.log))
-		.pipe(to5(compilerOptions))
-		.pipe(ngAnnotate({ sourceMap: true }))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'move', ->
-	gulp.src([
-		'./src/**/*.svg'
-		'./src/**/*.woff'
-		'./src/**/*.ttf'
-		'./src/**/*.png'
-		'./src/**/*.ico'
-		'./src/**/*.gif'
-		'./src/**/*.jpg'
-		'./src/**/*.eot'
-	])
-		.pipe(cache('move'))
-		.pipe(plumber())
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'json', ->
-	gulp.src('./src/**/*.json')
-		.pipe(cache('json'))
-		.pipe(plumber())
-		.pipe(changed(path.output, { extension: '.json' }))
-		.pipe(gulp.dest(path.output))
-		.pipe(browserSync.reload({ stream: true }))
-
-gulp.task 'minify', ->
-	gulp.src(path.minify)
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(uglify({ mangle: true }))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(path.output))
-
-gulp.task 'lint', ->
-	gulp.src(path.source)
-		.pipe(jshint())
-		.pipe(jshint.reporter(stylish))
-
-gulp.task 'serve', (done) ->
-	serverOptions.server.baseDir = [path.output]
-	serverOptions.server.middleware = [historyApiFallback]
-
-	browserSync(serverOptions, done)
-
-gulp.task 'watch', ->
-	watcher = gulp.watch(['./src/**'], ['compile'])
-	watcher.on('change', (event) ->
-		console.log("File #{event.path} was #{event.type}, running tasks...")
-	)
-
-gulp.task 'build', ->
-	routes = routes.map( (r) -> r.src )
-
-	config =
-		baseURL: path.output
-		main: 'app/app'
-		routes: routes
-		bundleThreshold: 0.6
-		config: './src/system.config.js'
-		sourceMaps: true
-		minify: false
-		dest: 'dist/app'
-		destJs: 'dist/app/app.js'
-
-	routeBundler.build(config)
+gulp.task 'run', (callback) ->
+	if situation.isProduction()
+		runSequence(
+			'release'
+#			'minify'
+			'serve'
+			callback
+		)
+	else if situation.isDevelopment()
+		runSequence(
+			'recompile'
+			'index.html'
+			'serve'
+			'watch'
+			callback
+		)
