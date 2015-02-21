@@ -26,6 +26,7 @@ path =
 	]
 	themesOutput: 'dist/assets/themes/'
 	output: 'dist/'
+	indexHtmlOutput: 'dist/index.html'
 	routes: './src/app/routes.json'
 	minify: ['dist/**/*.js']
 	assets: [
@@ -115,6 +116,7 @@ taskMaker.defineTask('copy', { src: path.assets, dest: path.output })
 taskMaker.defineTask('copy', { taskName: 'json', src: path.json, dest: path.output, changed: { extension: '.json' } })
 taskMaker.defineTask('copy', { taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html' })
 taskMaker.defineTask('copy', { taskName: 'cache-bust-index.html', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig })
+taskMaker.defineTask('htmlMinify', { taskName: 'htmlMinify-index.html', taskDeps: ['cache-bust-index.html'], src: path.indexHtmlOutput, dest: path.output })
 taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile', 'index.html'] })
 taskMaker.defineTask('minify', { src: path.minify, dest: path.output })
 taskMaker.defineTask('jshint', { taskName: 'lint', src: path.source })
@@ -148,6 +150,7 @@ gulp.task 'run', (callback) ->
 			'recompile'
 			'routeBundler'
 			'cache-bust-index.html'
+			'htmlMinify-index.html'
 			'minify'
 			'serve'
 			callback
