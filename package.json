@@ -5,7 +5,7 @@
   "devDependencies": {
     "coffee-script": "^1.9.1",
     "gulp": "^3.8.11",
-    "gulp-helpers": "^1.1.1",
+    "gulp-helpers": "^1.1.4",
     "run-sequence": "^1.0.2"
   },
   "dependencies": {},
