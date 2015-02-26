@@ -43,6 +43,7 @@ module.exports = function(config) {
     },
 
     proxies: {
+      '/base/app': '/base/src/app',
       '/bower_components': '/base/bower_components',
       '/jspm_packages': '/base/jspm_packages'
     },
