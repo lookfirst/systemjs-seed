@@ -1,4 +1,3 @@
 import angular from 'angular';
 
-export var timeModule = angular.module('common.components.time',
-  []);
+export var timeModule = angular.module('common.components.time', []);

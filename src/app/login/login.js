@@ -9,31 +9,31 @@ import './login.css!';
 
 
 export var loginModule = angular.module('login', [selectModule.name, dateModule.name, modalModule.name, userModule.name,
-  loginTpl.name, signupTpl.name]);
+	loginTpl.name, signupTpl.name]);
 
-loginModule.config(function($stateProvider){
-  $stateProvider.state('login', {
-    url: '/login',
-    templateUrl: 'app/login/login.tpl.html',
-    controller: 'LoginController'
-  });
+loginModule.config(function($stateProvider) {
+	$stateProvider.state('login', {
+		url: '/login',
+		templateUrl: 'app/login/login.tpl.html',
+		controller: 'LoginController'
+	});
 
-  $stateProvider.state('login.signup', {
-    url: '/login/signup',
-    templateUrl: 'app/login/signup.tpl.html'
-  });
+	$stateProvider.state('login.signup', {
+		url: '/login/signup',
+		templateUrl: 'app/login/signup.tpl.html'
+	});
 });
 
 loginModule.controller('LoginController', $scope => {
-  $scope.loggedin = false;
+	$scope.loggedin = false;
 
-  $scope.$watch('theme', function(newVal, oldVal){
-    if(!newVal) return;
+	$scope.$watch('theme', function(newVal, oldVal) {
+		if (!newVal) return;
 
-    System.import('assets/themes/' + newVal + '.css!').then(() => {
-      angular.element(document.body).addClass(newVal).removeClass(oldVal);
-    });
+		System.import('assets/themes/' + newVal + '.css!').then(() => {
+			angular.element(document.body).addClass(newVal).removeClass(oldVal);
+		});
 
-  });
+	});
 
 });

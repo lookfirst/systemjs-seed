@@ -3,7 +3,7 @@
 `import 'ocLazyLoad'`
 `import {routing} from 'common/utils/routing'`
 
-module = angular.module('seed', ['ui.router', 'oc.lazyLoad' ])
+module = angular.module('seed', ['ui.router', 'oc.lazyLoad'])
 
 module.config(routing(module))
 
@@ -13,8 +13,8 @@ module.config(($urlRouterProvider, $locationProvider, $stateProvider, $httpProvi
 	$urlRouterProvider.otherwise('/login')
 )
 
-angular.element(document).ready( ->
-	angular.bootstrap(document.body, [ module.name ], {
+angular.element(document).ready(->
+	angular.bootstrap(document.body, [module.name], {
 		strictDi: true
 	})
 )

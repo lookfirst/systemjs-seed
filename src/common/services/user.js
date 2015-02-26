@@ -1,21 +1,21 @@
 import angular from 'angular';
 
 var userModule = angular.module('user', []);
-userModule.factory('CurrentUser', ['$q', function CurrentUser($q){
+userModule.factory('CurrentUser', ['$q', function CurrentUser($q) {
 
-  return {
+	return {
 
-    get: function(){
-      var deferred = $q.defer();
+		get: function() {
+			var deferred = $q.defer();
 
-      deferred.resolve({
-        name: 'Panda'
-      });
+			deferred.resolve({
+				name: 'Panda'
+			});
 
-      return deferred.promise;
-    }
+			return deferred.promise;
+		}
 
-  };
+	};
 
 }]);
 
