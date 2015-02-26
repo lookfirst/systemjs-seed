@@ -117,7 +117,7 @@ taskMaker.defineTask('copy', { taskName: 'json', src: path.json, dest: path.outp
 taskMaker.defineTask('copy', { taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html' })
 taskMaker.defineTask('copy', { taskName: 'cache-bust-index.html', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig })
 taskMaker.defineTask('htmlMinify', { taskName: 'htmlMinify-index.html', taskDeps: ['cache-bust-index.html'], src: path.indexHtmlOutput, dest: path.output })
-taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile', 'index.html'] })
+taskMaker.defineTask('watch', { src: path.watch, tasks: ['compile', 'index.html', 'lint'] })
 taskMaker.defineTask('minify', { src: path.minify, dest: path.output })
 taskMaker.defineTask('jshint', { taskName: 'lint', src: path.source })
 taskMaker.defineTask('karma', { configFile: path.karmaConfig })
@@ -158,6 +158,7 @@ gulp.task 'run', (callback) ->
 	else if situation.isDevelopment()
 		runSequence(
 			'recompile'
+			'lint'
 			'index.html'
 			'serve'
 			'watch'
