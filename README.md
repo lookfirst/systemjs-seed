@@ -6,8 +6,8 @@ Based heavily off the *excellent* [angular-systemjs-seed](https://github.com/Swi
 
 This project does everything the parent project does:
 
-- ES6 Syntax via 6to5 with source maps
-- ES6 Modules via SystemJS
+- ES6 Syntax via Babel (was: 6to5) with source maps
+- ES6 Modules via SystemJS - No more requirejs!
 - Karma / Jasmine unit tests with coverage report
 - Lazy-loading modules via routes with AngularJS
 - Easy watch/browser-sync/lint/test/build setup via Gulp
@@ -19,18 +19,21 @@ This project does everything the parent project does:
 - Demonstrates on-demand CSS theme loading
 - Demonstrates the [systemjs-route-bundler](https://github.com/Swimlane/systemjs-route-bundler) route bundler
 
-In addition it also:
+But wait, there's more!
 
 - Adds support for CoffeeScript
 - Uses CS for the gulpfile
+- Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `dev` and `prod` gulp targets
 - Project is served entirely from the `dist` folder as a root
 - Fixes a bunch of misc small build file and lint issues
 - Enables override of port number with environment
 - index.html is based on a template
 - Templates are exported modules and can be referred to by name
-- Adds support for ngReact (TODO)
 - Enables Angular html5Mode by default
+- Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests in real-time
+- Moves all testing to a test folder to prevent leakage into `dist`
+- Minifies HTML
 
 ### Install & Run
 
@@ -43,7 +46,7 @@ In addition it also:
 
 - `gulp test` to run karma tests
 - `gulp lint` to run jshint
-- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode
+- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (Great for Heroku)
 
 ### Tooling
 
