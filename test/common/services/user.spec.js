@@ -4,26 +4,26 @@ import userModule from '../../../src/common/services/user';
 
 
 describe('CurrentUser', function() {
-  beforeEach(angular.mock.module(userModule.name));
+	beforeEach(angular.mock.module(userModule.name));
 
-  var CurrentUser, scope;
+	var CurrentUser, scope;
 
-  beforeEach(inject(function($injector) {
-    CurrentUser = $injector.get('CurrentUser');
-    scope = $injector.get('$rootScope');
-  }));
+	beforeEach(inject(function($injector) {
+		CurrentUser = $injector.get('CurrentUser');
+		scope = $injector.get('$rootScope');
+	}));
 
-  describe('.get', function() {
-    it('has a user', function() {
-      var user;
-      CurrentUser.get().then(function(data) {
-        user = data;
-      });
-      
-      scope.$digest();
+	describe('.get', function() {
+		it('has a user', function() {
+			var user;
+			CurrentUser.get().then(function(data) {
+				user = data;
+			});
 
-      expect(user).toEqual({ name: 'Panda' });
-    });
-  });
+			scope.$digest();
+
+			expect(user).toEqual({name: 'Panda'});
+		});
+	});
 
 });
