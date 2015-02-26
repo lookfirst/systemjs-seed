@@ -45,7 +45,7 @@ path =
 	karmaConfig: __dirname + '/karma.conf.js'
 
 if situation.isProduction()
-	serverOptions =
+	serverOptions = {
 		open: false
 		ui: false
 		notify: false
@@ -58,9 +58,16 @@ if situation.isProduction()
 			routes: {
 				'/jspm_packages': './jspm_packages'
 			}
+			snippetOptions: {
+				rule: {
+					match: /qqqqqqqqqqq/
+				}
+			}
 		}
+	}
+
 else if situation.isDevelopment()
-	serverOptions =
+	serverOptions = {
 		open: false
 		ui: false
 		notify: false
@@ -72,6 +79,7 @@ else if situation.isDevelopment()
 				'/jspm_packages': './jspm_packages'
 				'/bower_components': './bower_components'
 			}
+		}
 	}
 
 cacheBustConfig =
