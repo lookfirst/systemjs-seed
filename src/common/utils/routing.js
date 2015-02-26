@@ -3,37 +3,35 @@ import 'ui-router-extras';
 
 export var routing = function(module) {
 
-  module.requires.push('ct.ui.router.extras.future');
-  
-  var RouterConfig = function ($stateProvider, $futureStateProvider) {
+	module.requires.push('ct.ui.router.extras.future');
 
-    $futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
-      function($q, $ocLazyLoad, futureState) {
-        var def = $q.defer();
+	var RouterConfig = ['$stateProvider', '$futureStateProvider', function($stateProvider, $futureStateProvider) {
 
-        System.import(futureState.src).then(loaded => {
-          var newModule = loaded;
-          if (!loaded.name) {
-            var key = Object.keys(loaded);
-            newModule = loaded[key[0]];
-          }
+		$futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
+			function($q, $ocLazyLoad, futureState) {
+				var def = $q.defer();
 
-          $ocLazyLoad.load(newModule).then(function() {
-            def.resolve();
-          });
-        });
+				System.import(futureState.src).then(loaded => {
+					var newModule = loaded;
+					if (!loaded.name) {
+						var key = Object.keys(loaded);
+						newModule = loaded[key[0]];
+					}
 
-        return def.promise;
-      }
-    ]);
+					$ocLazyLoad.load(newModule).then(function() {
+						def.resolve();
+					});
+				});
 
-    futureRoutes.forEach(function(r) {
-      $futureStateProvider.futureState(r);
-    });
+				return def.promise;
+			}
+		]);
 
-  };
+		futureRoutes.forEach(function(r) {
+			$futureStateProvider.futureState(r);
+		});
 
-  RouterConfig.$inject = ['$stateProvider', '$futureStateProvider'];
+	}];
 
-  return RouterConfig;
+	return RouterConfig;
 };
