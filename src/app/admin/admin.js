@@ -1,7 +1,7 @@
 import angular from 'angular';
 import adminTpl from 'app/admin/admin.tpl';
-import {builderModule} from './builder/builder';
-import {usersModule} from './users/users';
+import builderModule from './builder/builder';
+import usersModule from './users/users';
 
 
 export var adminModule = angular.module('admin', [builderModule.name, usersModule.name, adminTpl.name]);

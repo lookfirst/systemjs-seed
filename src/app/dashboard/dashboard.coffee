@@ -1,6 +1,6 @@
 `import angular from 'angular'`
 `import dashboardsTpl from 'app/dashboard/dashboards.tpl'`
-`import {selectModule} from 'common/components/select'`
+`import selectModule from 'common/components/select'`
 
 dashboardModule = angular.module('dashboard', [selectModule.name, dashboardsTpl.name])
 

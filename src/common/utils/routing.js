@@ -1,7 +1,7 @@
 import futureRoutes from 'app/routes.json!';
 import 'ui-router-extras';
 
-export var routing = function(module) {
+export default function(module) {
 
 	module.requires.push('ct.ui.router.extras.future');
 
