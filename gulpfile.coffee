@@ -139,7 +139,7 @@ gulp.task 'recompile', (callback) ->
 
 gulp.task 'test', (callback) ->
 	runSequence(
-		'recompile'
+		'clean'
 		'karma'
 		callback
 	)

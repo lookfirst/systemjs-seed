@@ -1,7 +1,6 @@
 import angular from 'angular';
 
-export var userModule = angular.module('user', []);
-
+var userModule = angular.module('user', []);
 userModule.factory('CurrentUser', ['$q', function CurrentUser($q){
 
   return {
@@ -19,3 +18,5 @@ userModule.factory('CurrentUser', ['$q', function CurrentUser($q){
   };
 
 }]);
+
+export default userModule;

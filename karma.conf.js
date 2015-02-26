@@ -31,10 +31,10 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      config: 'dist/system.config.js',
-      loadFiles: ['dist/**/*.spec.js'],
+      config: 'src/system.config.js',
+      loadFiles: ['test/**/*.js'],
       serveFiles: [
-        'dist/**/**',
+        'src/**/**',
         'bower_components/**/*.js',
         'bower_components/**/*.css',
         'jspm_packages/**/*.js',
@@ -57,7 +57,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'dist/**/*.js': ['coverage']
+      'src/**/*.js': ['babel', 'coverage'],
+      'test/**/*.js': ['babel', 'coverage']
     },
 
     // optionally, configure the reporter
