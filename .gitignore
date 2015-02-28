@@ -1,5 +1,4 @@
 .idea
-bower_components
 coverage
 dist
 jspm_packages

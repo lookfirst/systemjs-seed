@@ -42,7 +42,7 @@ But wait, there's more!
 
 ### Install & Run
 
-1. `npm install -g gulp jspm bower`
+1. `npm install -g gulp jspm`
 2. `npm install`
 3. `gulp run`
 4. Browse to `http://localhost:9000`
