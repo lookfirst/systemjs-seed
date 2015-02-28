@@ -58,8 +58,7 @@ if (situation.isProduction()) {
 		server: {
 			baseDir: [path.output],
 			routes: {
-				'/jspm_packages': './jspm_packages',
-				'/bower_components': './bower_components'
+				'/jspm_packages': './jspm_packages'
 			}
 		}
 	};
