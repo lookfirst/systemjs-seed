@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "seed project for systemjs and angular",
   "devDependencies": {
-    "coffee-script": "^1.9.1",
     "gulp": "^3.8.11",
     "gulp-helpers": "^1.1.9",
     "run-sequence": "^1.0.2"
