@@ -35,8 +35,6 @@ module.exports = function(config) {
       loadFiles: ['test/**/*.js'],
       serveFiles: [
         'src/**/**',
-        'bower_components/**/*.js',
-        'bower_components/**/*.css',
         'jspm_packages/**/*.js',
         'jspm_packages/**/*.css'
       ]
@@ -44,7 +42,6 @@ module.exports = function(config) {
 
     proxies: {
       '/base/app': '/base/src/app',
-      '/bower_components': '/base/bower_components',
       '/jspm_packages': '/base/jspm_packages'
     },
 

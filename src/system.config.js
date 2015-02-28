@@ -3,7 +3,6 @@ System.config({
   "transpiler": "babel",
   "paths": {
     "*": "*.js",
-    "bower_components/*": "../bower_components/*.js",
     "github:*": "../jspm_packages/github/*.js",
     "npm:*": "../jspm_packages/npm/*.js",
     "systemjs-seed/*": "../src/*.js"
@@ -13,52 +12,16 @@ System.config({
 });
 
 System.config({
-  "meta": {
-    "bower_components/angular/angular": {
-      "format": "global",
-      "exports": "angular"
-    },
-    "bower_components/angular-mocks/angular-mocks": {
-      "deps": [
-        "angular"
-      ]
-    },
-    "bower_components/angular-ui-router/release/angular-ui-router": {
-      "deps": [
-        "angular"
-      ]
-    },
-    "bower_components/ocLazyLoad/dist/ocLazyLoad": {
-      "deps": [
-        "angular"
-      ]
-    },
-    "bower_components/ui-router-extras/release/modular/ct-ui-router-extras.core": {
-      "format": "global",
-      "deps": [
-        "angular"
-      ]
-    },
-    "bower_components/ui-router-extras/release/modular/ct-ui-router-extras.future": {
-      "format": "global",
-      "deps": [
-        "bower_components/ui-router-extras/release/modular/ct-ui-router-extras.core"
-      ]
-    }
-  }
-});
-
-System.config({
   "map": {
-    "angular": "bower_components/angular/angular",
-    "angular-mocks": "bower_components/angular-mocks/angular-mocks",
-    "angular-ui-router": "bower_components/angular-ui-router/release/angular-ui-router",
+    "angular": "npm:angular@1.3.14",
+    "angular-mocks": "npm:angular-mocks@1.3.14",
+    "angular-ui-router": "npm:angular-ui-router@0.2.13",
     "css": "github:systemjs/plugin-css@0.1.5",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "ocLazyLoad": "bower_components/ocLazyLoad/dist/ocLazyLoad",
+    "oclazyload": "npm:oclazyload@0.6.0",
     "plugin-css": "github:systemjs/plugin-css@0.1.5",
     "plugin-json": "github:systemjs/plugin-json@0.1.0",
-    "ui-router-extras": "bower_components/ui-router-extras/release/modular/ct-ui-router-extras.future",
+    "ui-router-extras": "npm:ui-router-extras@0.0.13",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -110,6 +73,12 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:angular-ui-router@0.2.13": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:angular@1.3.14": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
@@ -149,6 +118,12 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:oclazyload@0.6.0": {
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.1",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
@@ -183,6 +158,9 @@ System.config({
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
+    "npm:ui-router-extras@0.0.13": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:url@0.10.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "punycode": "npm:punycode@1.3.2",
@@ -195,3 +173,4 @@ System.config({
     }
   }
 });
+
