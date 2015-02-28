@@ -27,18 +27,17 @@ This project does everything the parent project does:
 But wait, there's more!
 
 - Adds support for CoffeeScript
-- Uses CS for the gulpfile
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
-- Adds `dev` and `prod` gulp targets
-- Project is served entirely from the `dist` folder as a root
+- Adds `run` and `default` gulp targets
+- Project is served from the `dist` folder
 - Fixes a bunch of misc small build file and lint issues
-- Enables override of port number with environment
+- Override of port number with environment
 - index.html is based on a template
 - Templates are exported modules and can be referred to by name
 - Enables Angular html5Mode by default
-- Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests in real-time
-- Moves all testing to a test folder to prevent leakage into `dist`
-- Minifies HTML
+- Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests inline
+- Moves all tests to a separate folder to prevent leakage into `dist`
+- Minifies HTML in production
 
 ### Install & Run
 
@@ -51,7 +50,7 @@ But wait, there's more!
 
 - `gulp test` to run karma tests
 - `gulp lint` to run jshint
-- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (Great for Heroku)
+- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (great for Heroku)
 
 ### Tooling
 
