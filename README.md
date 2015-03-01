@@ -26,6 +26,7 @@ This project does everything the parent project does:
 
 But wait, there's more!
 
+- Adds example TodoMVC app
 - Adds support for CoffeeScript
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `run` and `default` gulp targets
