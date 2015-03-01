@@ -1,14 +1,16 @@
-<h1>Login: {{loggedin}}</h1>
-<a href="#" ui-sref="login.signup">Signup</a>
+<div class="login">
+	<h1>Login: {{loggedin}}</h1>
+	<a href="#" ui-sref="login.signup">Signup</a>
 
-<div style="margin-top:20px">
-	<strong>Theme:</strong>
-	<select ng-model="theme">
-		<option value="dark">Dark</option>
-		<option value="light">Light</option>
-	</select>
+	<div style="margin-top:20px">
+		<strong>Theme:</strong>
+		<select ng-model="theme">
+			<option value="dark">Dark</option>
+			<option value="light">Light</option>
+		</select>
+	</div>
+
+	<div class="content"></div>
+
+	<div ui-view></div>
 </div>
-
-<div class="content"></div>
-
-<div ui-view></div>

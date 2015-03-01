@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en" data-framework="angularjs">
 <head>
-	<meta charset=" utf-8" />
+	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="viewport" content="width = device-width, minimal-ui, initial-scale = 1, user-scalable = no" />
 	<meta name="apple-mobile-web-app-title" content="Demo App" />
-	<title>Demo App</title>
+	<title>SystemJS • AngularJS</title>
 	<base href="/" />
 </head>
 <body ng-cloak>
@@ -20,13 +20,8 @@
 		</div>
 	</noscript>
 
-	<h1>Welcome</h1>
-	<a ui-sref="login" href="#">Login</a> |
-	<a ui-sref="dashboards" href="#">Dashboard</a> |
-	<a ui-sref="forms" href="#">Forms</a> |
-	<a ui-sref="admin" href="#">Admin</a>
-
 	<ui-view class="content-area"></ui-view>
+
 	<script type="text/javascript" src="jspm_packages/system.js"></script>
 	<script type="text/javascript" src="system.config.js"></script>
 
