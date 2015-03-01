@@ -21,6 +21,8 @@ System.config({
     "oclazyload": "npm:oclazyload@0.6.0",
     "plugin-css": "github:systemjs/plugin-css@0.1.5",
     "plugin-json": "github:systemjs/plugin-json@0.1.0",
+    "todomvc-app-css": "npm:todomvc-app-css@1.0.1",
+    "todomvc-common": "npm:todomvc-common@1.0.1",
     "ui-router-extras": "npm:ui-router-extras@0.0.13",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

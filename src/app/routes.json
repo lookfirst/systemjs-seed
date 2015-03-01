@@ -1,5 +1,11 @@
 [
 	{
+		"stateName": "todo",
+		"urlPrefix": "/todo",
+		"type": "load",
+		"src": "app/todo/todo"
+	},
+	{
 		"stateName": "login",
 		"urlPrefix": "/login",
 		"type": "load",
