@@ -62,6 +62,7 @@ But wait, there's more!
 - https://github.com/johnpapa/angularjs-styleguide
 - https://github.com/gocardless/angularjs-style-guide
 - http://sett.ociweb.com/sett/settApr2014.html
+- http://todomvc.com/examples/angularjs-perf/#/
 
 ### Research & Resources
 
