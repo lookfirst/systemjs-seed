@@ -4,7 +4,7 @@
   "description": "seed project for systemjs and angular",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-helpers": "^1.1.9",
+    "gulp-helpers": "^1.1.10",
     "jspm": "^0.14.0",
     "run-sequence": "^1.0.2"
   },
@@ -33,6 +33,7 @@
     "url": "https://github.com/lookfirst/systemjs-seed.git"
   },
   "scripts": {
-    "postinstall": "jspm install"
+    "postinstall": "jspm install",
+    "test": "node_modules/gulp-helpers/node_modules/karma/bin/karma  start --single-run --browsers PhantomJS"
   }
 }

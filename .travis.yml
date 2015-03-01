@@ -10,7 +10,7 @@ branches:
 
 script:
   - npm install
-  - gulp test
+  - npm test
 
 cache:
   directories:
