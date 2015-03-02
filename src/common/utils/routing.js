@@ -1,5 +1,5 @@
 import futureRoutes from 'app/routes.json!';
-import 'ui-router-extras';
+import 'ui-router-extras/release/modular/ct-ui-router-extras.future';
 
 export default function(module) {
 
