@@ -1,6 +1,6 @@
 import angular from 'angular';
 import 'angular-mocks';
-import userModule from '../../../src/common/services/user';
+import userModule from '../../../dist/common/services/user';
 
 
 describe('CurrentUser', function() {

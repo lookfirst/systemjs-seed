@@ -34,14 +34,16 @@ module.exports = function(config) {
       config: 'src/system.config.js',
       loadFiles: ['test/**/*.js'],
       serveFiles: [
-        'src/**/**',
+        'dist/**/**',
         'jspm_packages/**/*.js',
         'jspm_packages/**/*.css'
       ]
     },
 
     proxies: {
-      '/base/app': '/base/src/app',
+      '/base/app': '/base/dist/app',
+      '/base/dist/app/dist': '/base/dist',
+      '/base/test/app/dist': '/base/dist',
       '/jspm_packages': '/base/jspm_packages'
     },
 
@@ -55,7 +57,6 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['babel', 'coverage'],
       'test/**/*.js': ['babel', 'coverage']
     },
 
