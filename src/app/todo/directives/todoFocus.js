@@ -14,3 +14,5 @@ todomvc.directive('todoFocus', function ($timeout) {
 		});
 	};
 });
+
+export default todomvc;
