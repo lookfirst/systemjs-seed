@@ -42,8 +42,7 @@ module.exports = function(config) {
 
     proxies: {
       '/base/app': '/base/dist/app',
-      '/base/dist/app/dist': '/base/dist',
-      '/base/test/app/dist': '/base/dist',
+      '/base/common': '/base/dist/common',
       '/jspm_packages': '/base/jspm_packages'
     },
 
