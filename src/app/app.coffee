@@ -1,17 +1,13 @@
-`import angular from 'angular'`
-`import routing from 'common/utils/routing'`
+`import appModule from 'appModule'`
 
-seed = angular.module('seed', [])
-seed.config(routing(seed))
-
-seed.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
+appModule.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
 	$locationProvider.html5Mode(true)
 	$httpProvider.useApplyAsync(true)
 	$urlRouterProvider.otherwise('/todo')
 )
 
 angular.element(document).ready(->
-	angular.bootstrap(document.body, [seed.name], {
+	angular.bootstrap(document.body, [appModule.name], {
 		strictDi: true
 	})
 )
