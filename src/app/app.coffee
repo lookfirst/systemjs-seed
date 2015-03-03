@@ -1,20 +1,17 @@
 `import angular from 'angular'`
-`import 'angular-ui-router'`
-`import 'oclazyload'`
 `import routing from 'common/utils/routing'`
 
-module = angular.module('seed', ['ui.router', 'oc.lazyLoad'])
+seed = angular.module('seed', [])
+seed.config(routing(seed))
 
-module.config(routing(module))
-
-module.config(($urlRouterProvider, $locationProvider, $stateProvider, $httpProvider) ->
+seed.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
 	$locationProvider.html5Mode(true)
 	$httpProvider.useApplyAsync(true)
 	$urlRouterProvider.otherwise('/todo')
 )
 
 angular.element(document).ready(->
-	angular.bootstrap(document.body, [module.name], {
+	angular.bootstrap(document.body, [seed.name], {
 		strictDi: true
 	})
 )

@@ -1,8 +1,15 @@
 import futureRoutes from 'app/routes.json!';
+
+import 'oclazyload';
+import 'angular-ui-router';
+import 'ui-router-extras/release/modular/ct-ui-router-extras.core';
 import 'ui-router-extras/release/modular/ct-ui-router-extras.future';
 
 export default function(module) {
 
+	module.requires.push('oc.lazyLoad');
+	module.requires.push('ui.router');
+	module.requires.push('ct.ui.router.extras.core');
 	module.requires.push('ct.ui.router.extras.future');
 
 	var RouterConfig = ['$stateProvider', '$futureStateProvider', function($stateProvider, $futureStateProvider) {
