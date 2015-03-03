@@ -1,16 +1,16 @@
 import angular from 'angular';
+import userModule from 'common/services/user';
 import 'angular-mocks';
-import userModule from '../../../dist/common/services/user';
 
 
 describe('CurrentUser', function() {
 	beforeEach(angular.mock.module(userModule.name));
 
-	var CurrentUser, scope;
+	var CurrentUser, $rootScope;
 
-	beforeEach(inject(function($injector) {
-		CurrentUser = $injector.get('CurrentUser');
-		scope = $injector.get('$rootScope');
+	beforeEach(inject(function(_CurrentUser_, _$rootScope_) {
+		CurrentUser = _CurrentUser_;
+		$rootScope = _$rootScope_;
 	}));
 
 	describe('.get', function() {
@@ -20,7 +20,7 @@ describe('CurrentUser', function() {
 				user = data;
 			});
 
-			scope.$digest();
+			$rootScope.$digest();
 
 			expect(user).toEqual({name: 'Panda'});
 		});
