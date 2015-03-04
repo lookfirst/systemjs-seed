@@ -1,4 +1,4 @@
-`import appModule from 'appModule'`
+`import appModule from 'app/appModule'`
 
 appModule.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
 	$locationProvider.html5Mode(true)
