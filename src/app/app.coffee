@@ -1,4 +1,9 @@
-`import appModule from 'app/appModule'`
+`import angular from 'angular'`
+`import routing from 'common/utils/routing'`
+
+appModule = angular.module('app', [])
+
+appModule.config(routing(appModule));
 
 appModule.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
 	$locationProvider.html5Mode(true)
@@ -11,3 +16,5 @@ angular.element(document).ready(->
 		strictDi: true
 	})
 )
+
+`export default appModule`
