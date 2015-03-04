@@ -5,7 +5,7 @@ System.config({
     "*": "*.js",
     "github:*": "../jspm_packages/github/*.js",
     "npm:*": "../jspm_packages/npm/*.js",
-    "systemjs-seed/*": "../src/*.js"
+    "systemjs-seed/*": "../dist/*.js"
   },
   "buildCSS": true,
   "separateCSS": false
