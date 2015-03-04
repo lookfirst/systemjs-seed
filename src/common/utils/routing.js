@@ -15,29 +15,29 @@ export default function(module) {
 	var RouterConfig = ['$ocLazyLoadProvider', '$stateProvider', '$futureStateProvider',
 		function($ocLazyLoadProvider, $stateProvider, $futureStateProvider) {
 
-		$futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
-			function($q, $ocLazyLoad, futureState) {
+			$futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
+				function($q, $ocLazyLoad, futureState) {
 
-			var def = $q.defer();
+				var def = $q.defer();
 
-			System.import(futureState.src).then(loaded => {
-				var newModule = loaded;
-				if (!loaded.name) {
-					var key = Object.keys(loaded);
-					newModule = loaded[key[0]];
-				}
+				System.import(futureState.src).then(loaded => {
+					var newModule = loaded;
+					if (!loaded.name) {
+						var key = Object.keys(loaded);
+						newModule = loaded[key[0]];
+					}
 
-				$ocLazyLoad.load(newModule).then(function() {
-					def.resolve();
+					$ocLazyLoad.load(newModule).then(function() {
+						def.resolve();
+					});
 				});
+
+				return def.promise;
+			}]);
+
+			futureRoutes.forEach(function(r) {
+				$futureStateProvider.futureState(r);
 			});
-
-			return def.promise;
-		}]);
-
-		futureRoutes.forEach(function(r) {
-			$futureStateProvider.futureState(r);
-		});
 
 	}];
 
