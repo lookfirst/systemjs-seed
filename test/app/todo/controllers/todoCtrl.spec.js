@@ -72,6 +72,18 @@ describe('Todo Controller', function () {
 			goTo('todo.active');
 			expect($scope.statusFilter.completed).toBeFalsy();
 		}));
+
+		it('should filter non-completed with predefined state', inject(function ($controller) {
+			$state.current.url = '/active';
+
+			ctrl = $controller('TodoCtrl', {
+				$rootScope: $rootScope,
+				$scope: $scope,
+				$state: $state
+			});
+
+			expect($scope.statusFilter.completed).toBeFalsy();
+		}));
 	});
 
 	describe('being at /completed', function () {
@@ -83,6 +95,18 @@ describe('Todo Controller', function () {
 			});
 
 			goTo('todo.completed')
+			expect($scope.statusFilter.completed).toBeTruthy();
+		}));
+
+		it('should filter completed with predefined state', inject(function ($controller) {
+			$state.current.url = '/completed';
+
+			ctrl = $controller('TodoCtrl', {
+				$rootScope: $rootScope,
+				$scope: $scope,
+				$state: $state
+			});
+
 			expect($scope.statusFilter.completed).toBeTruthy();
 		}));
 	});

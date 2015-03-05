@@ -12,9 +12,15 @@ import '../directives/todoFocus';
  */
 todoModule.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $filter, todoStorage) {
 	var todos;
+	var setStatusFilter = function(currentState) {
+		$scope.statusFilter = { '/active': {completed: false}, '/completed': {completed: true} }[currentState.url];
+	};
+
 	$scope.todos = [];
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
+
+	setStatusFilter($state.current);
 
 	todoStorage.get().then(function(allTodos) {
 		todos = $scope.todos = allTodos;
@@ -27,7 +33,7 @@ todoModule.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, 
 	}, true);
 
 	$rootScope.$on('$stateChangeStart', function(event, toState) {
-		$scope.statusFilter = { '/active': {completed: false}, '/completed': {completed: true} }[toState.url];
+		setStatusFilter(toState);
 	});
 
 	$scope.addTodo = function () {
