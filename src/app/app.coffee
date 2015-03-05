@@ -6,7 +6,7 @@ appModule = angular.module('app', [])
 appModule.config(routing(appModule));
 
 appModule.config(($locationProvider, $httpProvider, $urlRouterProvider) ->
-	$locationProvider.html5Mode(true)
+	$locationProvider.html5Mode({enabled: true, requireBase: false})
 	$httpProvider.useApplyAsync(true)
 	$urlRouterProvider.otherwise('/todo')
 )
