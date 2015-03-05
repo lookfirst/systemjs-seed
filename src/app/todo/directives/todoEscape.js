@@ -14,3 +14,5 @@ todoModule.directive('todoEscape', function () {
 		});
 	};
 });
+
+export default todoModule;
