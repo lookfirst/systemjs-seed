@@ -26,11 +26,11 @@ This project does everything the parent project does:
 
 But wait, there's more!
 
-- Adds example TodoMVC app
-- Adds support for CoffeeScript
+- Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) ([with tests](https://github.com/lookfirst/systemjs-seed/tree/master/test/app/todo)!)
+- Adds support for CoffeeScript (optional)
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `run` and `default` gulp targets
-- Project is served from the `dist` folder
+- Project is served from the `dist` folder for security
 - Fixes a bunch of misc small build file and lint issues
 - Override of port number with environment
 - index.html is based on a template
@@ -39,6 +39,7 @@ But wait, there's more!
 - Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests inline
 - Moves all tests to a separate folder to prevent leakage into `dist`
 - Minifies HTML in production
+- Runs in Travis CI using PhantomJS
 
 ### Install & Run
 
@@ -50,13 +51,19 @@ But wait, there's more!
 ### Gulp Tasks
 
 - `gulp test` to run karma tests
+- `npm test` to run karma tests using PhantomJS (for Travis CI)
 - `gulp lint` to run jshint
 - `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (great for Heroku)
 
 ### Tooling
 
+- [Gulp](http://gulpjs.com/)
 - [EditorConfig](http://editorconfig.org/)
 - [JSHint](http://jshint.com/install/)
+- [Karma](http://karma-runner.github.io)
+- [jspm](http://jspm.io/)
+- [Babel](http://babeljs.io/)
+- [SystemJS](https://github.com/systemjs/systemjs)
 
 ### Best Practices
 
