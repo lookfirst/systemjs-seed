@@ -1,8 +1,15 @@
-import todomvc from './todoModule';
+import todoModule from './todoModule';
+
+// must export this near the top
+export default todoModule;
+
 import todoTpl from 'app/todo/todo.tpl';
+import 'todomvc-common/base.css!';
+import 'todomvc-app-css/index.css!';
+
 import './controllers/todoCtrl';
 
-todomvc.config(function ($stateProvider) {
+todoModule.config(function ($stateProvider) {
 
 	$stateProvider
 		.state('todo', {
@@ -26,5 +33,3 @@ todomvc.config(function ($stateProvider) {
 			controller: 'TodoCtrl'
 		});
 });
-
-export default todomvc;

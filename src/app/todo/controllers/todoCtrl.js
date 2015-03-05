@@ -1,4 +1,4 @@
-import todomvc from '../todoModule';
+import todoModule from '../todo';
 import '../services/todoStorage';
 import '../directives/todoEscape';
 import '../directives/todoFocus';
@@ -8,7 +8,7 @@ import '../directives/todoFocus';
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
-todomvc.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $filter, todoStorage) {
+todoModule.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $filter, todoStorage) {
 	var todos = $scope.todos = todoStorage.get();
 
 	$scope.newTodo = '';
@@ -88,4 +88,4 @@ todomvc.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $fi
 	};
 });
 
-export default todomvc;
+export default todoModule;

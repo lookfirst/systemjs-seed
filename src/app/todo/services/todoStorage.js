@@ -1,6 +1,6 @@
-import todomvc from '../todoModule';
+import todoModule from '../todoModule';
 
-todomvc.factory('todoStorage', function () {
+todoModule.factory('todoStorage', function () {
 	var STORAGE_ID = 'todos-angularjs-systemjs';
 
 	return {
