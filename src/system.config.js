@@ -18,7 +18,7 @@ System.config({
     "babel": "npm:babel@4.6.6",
     "css": "github:systemjs/plugin-css@0.1.5",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "oclazyload": "github:lookfirst/oclazyload@0.7.0",
+    "oclazyload": "npm:oclazyload@0.6.2",
     "plugin-css": "github:systemjs/plugin-css@0.1.5",
     "plugin-json": "github:systemjs/plugin-json@0.1.0",
     "todomvc-app-css": "npm:todomvc-app-css@1.0.1",
@@ -57,7 +57,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.1": {
-      "process": "npm:process@0.10.0"
+      "process": "npm:process@0.10.1"
     },
     "github:jspm/nodelibs-querystring@0.1.0": {
       "querystring": "npm:querystring@0.2.0"
@@ -489,6 +489,12 @@ System.config({
     },
     "npm:nan@1.5.3": {
       "path": "github:jspm/nodelibs-path@0.1.0"
+    },
+    "npm:oclazyload@0.6.2": {
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.1",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:once@1.3.1": {
       "wrappy": "npm:wrappy@1.0.1"
