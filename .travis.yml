@@ -25,3 +25,4 @@ before_install:
 - jspm config endpoints.github.timeouts.lookups 60
 - jspm config endpoints.github.maxRepoSize 0
 - jspm config endpoints.github.auth $GH_TOKEN
+- cat ~/.jspm/config
