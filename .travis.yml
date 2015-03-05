@@ -1,21 +1,23 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
-
+- '0.12'
+- '0.11'
+- '0.10'
 branches:
   only:
-    - master
-
+  - master
 script:
-  - npm install
-  - npm test
-
+- npm install
+- npm test
 cache:
   directories:
   - node_modules
-
 notifications:
   email:
-    - latchkey@gmail.com
+  - latchkey@gmail.com
+env:
+  global:
+    secure: JY+DUgW8Sci7ALC2r1TGogYRwKtgrEfZlvl5GLS5VbdQw3PaqyBUGkeYFIqb2o2ktVNSpOB6UTvLhJ4LoCowx3R2BWdstk1vy5KNTyJBwuOWI0e/UI3TS3/Bm/GnKyCzX6TBPVONn/F1hLM/PTIWJcia6fngC6sYi0ASLZuxRl4=
+before_install:
+- npm install -g jspm
+- jspm config endpoints.github.auth $GH_TOKEN
