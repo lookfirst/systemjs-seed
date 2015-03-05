@@ -35,6 +35,6 @@
   },
   "scripts": {
     "postinstall": "jspm install",
-    "test": "node_modules/gulp-helpers/node_modules/karma/bin/karma  start --single-run --browsers PhantomJS"
+    "test": "gulp recompile && node_modules/gulp-helpers/node_modules/karma/bin/karma  start --single-run --browsers PhantomJS"
   }
 }
