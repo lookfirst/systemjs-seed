@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 import todoModule from '../todo';
 import '../services/todoStorage';
 import '../directives/todoEscape';
@@ -9,34 +11,43 @@ import '../directives/todoFocus';
  * - exposes the model to the template and provides event handlers
  */
 todoModule.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $filter, todoStorage) {
-	var todos = $scope.todos = todoStorage.get();
-
+	var todos;
+	$scope.todos = [];
 	$scope.newTodo = '';
-	$scope.remainingCount = $filter('filter')(todos, {completed: false}).length;
 	$scope.editedTodo = null;
+
+	todoStorage.get().then(function(allTodos) {
+		todos = $scope.todos = allTodos;
+	});
+
+	$scope.$watch('todos', function () {
+		$scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
+		$scope.completedCount = todos.length - $scope.remainingCount;
+		$scope.allChecked = !$scope.remainingCount;
+	}, true);
 
 	$rootScope.$on('$stateChangeStart', function(event, toState) {
 		$scope.statusFilter = { '/active': {completed: false}, '/completed': {completed: true} }[toState.url];
 	});
 
-	$scope.$watch('remainingCount == 0', function (val) {
-		$scope.allChecked = val;
-	});
-
 	$scope.addTodo = function () {
-		var newTodo = $scope.newTodo.trim();
-		if (newTodo.length === 0) {
+		var newTodo = {
+			title: $scope.newTodo.trim(),
+			completed: false
+		};
+
+		if (!newTodo.title) {
 			return;
 		}
 
-		todos.push({
-			title: newTodo,
-			completed: false
-		});
-		todoStorage.put(todos);
-
-		$scope.newTodo = '';
-		$scope.remainingCount++;
+		$scope.saving = true;
+		todoStorage.insert(newTodo)
+			.then(function success() {
+				$scope.newTodo = '';
+			})
+			.finally(function () {
+				$scope.saving = false;
+			});
 	};
 
 	$scope.editTodo = function (todo) {
@@ -45,46 +56,73 @@ todoModule.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, 
 		$scope.originalTodo = angular.extend({}, todo);
 	};
 
-	$scope.doneEditing = function (todo) {
-		$scope.editedTodo = null;
-		todo.title = todo.title.trim();
-
-		if (!todo.title) {
-			$scope.removeTodo(todo);
+	$scope.saveEdits = function (todo, event) {
+		// Blur events are automatically triggered after the form submit event.
+		// This does some unfortunate logic handling to prevent saving twice.
+		if (event === 'blur' && $scope.saveEvent === 'submit') {
+			$scope.saveEvent = null;
+			return;
 		}
 
-		todoStorage.put(todos);
+		$scope.saveEvent = event;
+
+		if ($scope.reverted) {
+			// Todo edits were reverted-- don't save.
+			$scope.reverted = null;
+			return;
+		}
+
+		todo.title = todo.title.trim();
+
+		if (todo.title === $scope.originalTodo.title) {
+			$scope.editedTodo = null;
+			return;
+		}
+
+		todoStorage[todo.title ? 'put' : 'delete'](todo)
+			.then(function success() {}, function error() {
+				todo.title = $scope.originalTodo.title;
+			})
+			.finally(function () {
+				$scope.editedTodo = null;
+			});
 	};
 
-	$scope.revertEditing = function (todo) {
+	$scope.revertEdits = function (todo) {
 		todos[todos.indexOf(todo)] = $scope.originalTodo;
-		$scope.doneEditing($scope.originalTodo);
+		$scope.editedTodo = null;
+		$scope.originalTodo = null;
+		$scope.reverted = true;
 	};
 
 	$scope.removeTodo = function (todo) {
-		$scope.remainingCount -= todo.completed ? 0 : 1;
-		todos.splice(todos.indexOf(todo), 1);
-		todoStorage.put(todos);
+		todoStorage.delete(todo);
 	};
 
-	$scope.todoCompleted = function (todo) {
-		$scope.remainingCount += todo.completed ? -1 : 1;
-		todoStorage.put(todos);
+	$scope.saveTodo = function (todo) {
+		todoStorage.put(todo);
+	};
+
+	$scope.toggleCompleted = function (todo, completed) {
+		if (angular.isDefined(completed)) {
+			todo.completed = completed;
+		}
+		todoStorage.put(todo, todos.indexOf(todo))
+			.then(function success() {}, function error() {
+				todo.completed = !todo.completed;
+			});
 	};
 
 	$scope.clearCompletedTodos = function () {
-		$scope.todos = todos = todos.filter(function (val) {
-			return !val.completed;
-		});
-		todoStorage.put(todos);
+		todoStorage.clearCompleted();
 	};
 
 	$scope.markAll = function (completed) {
 		todos.forEach(function (todo) {
-			todo.completed = !completed;
+			if (todo.completed !== completed) {
+				$scope.toggleCompleted(todo, completed);
+			}
 		});
-		$scope.remainingCount = completed ? todos.length : 0;
-		todoStorage.put(todos);
 	};
 });
 
