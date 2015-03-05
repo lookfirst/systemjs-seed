@@ -20,9 +20,10 @@
       "angular": "npm:angular@^1.3.14",
       "angular-mocks": "npm:angular-mocks@^1.3.14",
       "angular-ui-router": "npm:angular-ui-router@^0.2.13",
+      "babel": "npm:babel@^4.6.6",
       "css": "github:systemjs/plugin-css@^0.1.5",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "oclazyload": "npm:oclazyload@^0.6.0",
+      "oclazyload": "github:lookfirst/oclazyload@^0.7.0",
       "todomvc-app-css": "npm:todomvc-app-css@^1.0.1",
       "todomvc-common": "npm:todomvc-common@^1.0.1",
       "ui-router-extras": "npm:ui-router-extras@^0.0.13"

@@ -10,6 +10,16 @@ todomvc.factory('todoStorage', function () {
 
 		put: function (todos) {
 			localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+		},
+
+		insert: function (todo) {
+			let todos = this.get();
+			todos.push(todo);
+			this.put(todos);
+		},
+
+		reset: function() {
+			localStorage.removeItem(STORAGE_ID);
 		}
 	};
 });

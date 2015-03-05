@@ -1,10 +1,9 @@
 import angular from 'angular';
 
 var userModule = angular.module('user', []);
-userModule.factory('CurrentUser', ['$q', function CurrentUser($q) {
 
+userModule.factory('CurrentUser', function CurrentUser($q) {
 	return {
-
 		get: function() {
 			var deferred = $q.defer();
 
@@ -14,9 +13,7 @@ userModule.factory('CurrentUser', ['$q', function CurrentUser($q) {
 
 			return deferred.promise;
 		}
-
 	};
-
-}]);
+});
 
 export default userModule;

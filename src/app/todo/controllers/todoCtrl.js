@@ -87,3 +87,5 @@ todomvc.controller('TodoCtrl', function TodoCtrl($rootScope, $scope, $state, $fi
 		todoStorage.put(todos);
 	};
 });
+
+export default todomvc;

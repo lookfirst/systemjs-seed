@@ -201,7 +201,7 @@ gulp.task('recompile', function(callback) {
 });
 
 gulp.task('test', function(callback) {
-	return runSequence('clean', 'karma', callback);
+	return runSequence('recompile', 'karma', callback);
 });
 
 gulp.task('run', function(callback) {
