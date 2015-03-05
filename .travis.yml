@@ -17,8 +17,11 @@ notifications:
   - latchkey@gmail.com
 env:
   global:
-  - secure: KrZYTHURArs3opdvPiy9MQA4r56RyuOmMZ+hES6+M089uAcuaS0YNBmaC1ipk/GDBUQwt76DUeLk9ASFZw0u4Qi5WIxvl/CSGMj+tf3MsnLIpr8kCtgMIjdPO3OdmALjuHEIDmyToSenHmKqAnhpXGJBXk9O5qDwIVUDON1JrUw=
+  - secure: gNhxEi/IH4KP1l8+MfMDCHzy7yzhAPT87yyFiV9Gy2pxi8F/3SDefSYddg2ohnJ1y1jAuhj22fCqQi+KAX485b52BB+kbk9kxET8zqCXk1OczCjxnpZQ2louMrUMT3+6tf1v0+wrkwmwzLniCyRHbrAkotOXSQu8PBskp9YYfvk=
 before_install:
-- npm install -g jspm
+- npm install jspm
+- jspm config endpoints.github.handler jspm-github
+- jspm config endpoints.github.remote https://github.jspm.io
+- jspm config endpoints.github.timeouts.lookups 60
+- jspm config endpoints.github.maxRepoSize 0
 - jspm config endpoints.github.auth $GH_TOKEN
-- jspm endpoint export github
