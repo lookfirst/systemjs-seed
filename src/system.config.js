@@ -18,7 +18,7 @@ System.config({
     "angular-ui-router": "npm:angular-ui-router@0.2.13",
     "css": "github:systemjs/plugin-css@0.1.5",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "oclazyload": "npm:oclazyload@0.6.0",
+    "oclazyload": "github:lookfirst/oclazyload@0.7.0",
     "plugin-css": "github:systemjs/plugin-css@0.1.5",
     "plugin-json": "github:systemjs/plugin-json@0.1.0",
     "todomvc-app-css": "npm:todomvc-app-css@1.0.1",
@@ -118,12 +118,6 @@ System.config({
       "http": "github:jspm/nodelibs-http@1.7.0"
     },
     "npm:inherits@2.0.1": {
-      "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:oclazyload@0.6.0": {
-      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
-      "fs": "github:jspm/nodelibs-fs@0.1.1",
-      "process": "github:jspm/nodelibs-process@0.1.1",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:os-browserify@0.1.2": {
