@@ -4,7 +4,7 @@
   "description": "seed project for systemjs and angular",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-helpers": "^1.1.10",
+    "gulp-helpers": "^1.1.12",
     "jspm": "^0.14.0",
     "run-sequence": "^1.0.2"
   },
