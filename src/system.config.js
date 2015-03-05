@@ -4,8 +4,7 @@ System.config({
   "paths": {
     "*": "*.js",
     "github:*": "../jspm_packages/github/*.js",
-    "npm:*": "../jspm_packages/npm/*.js",
-    "systemjs-seed/*": "../dist/*.js"
+    "npm:*": "../jspm_packages/npm/*.js"
   },
   "buildCSS": true,
   "separateCSS": false
