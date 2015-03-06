@@ -5,7 +5,7 @@ import appModule from 'app/app';
 
 import 'app/react/example.css!';
 
-var reactExample = angular.module('reactExample', ['react', appModule.name]);
+var reactExample = angular.module('reactExample', ['react', appModule.name, exampleTpl.name]);
 
 // comment the export default line out to see error in ocLazyLoad:
 export default reactExample;
