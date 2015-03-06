@@ -41,6 +41,23 @@ But wait, there's more!
 - Minifies HTML in production
 - Runs in Travis CI using PhantomJS
 
+## How to use this project
+
+Duplicate the repository, don't fork it. The reason for this is that you probably want your own name and do not want github to record that you've forked it. Instructions: https://help.github.com/articles/duplicating-a-repository/
+
+### Layout
+
+This should give you an idea of how to get started with building your own project. Most of the effort required will be actually deleting the existing app examples and building your own.
+
+* `package.json::jspm` -- Location of our library dependencies, such as angular. Manage with `jspm install [DEP]`.
+* `src/system.config.js` -- Where jspm manages all of its installed dependencies.
+* `src/index.tpl.html` -- The main entrypoint for the application. This loads `system.js`, `system.config.js` and the application.
+* `src/app/routes.json` -- Declare all of your top level routes here.
+* `src/app/app.coffee` -- Bootstraps angular and is the top level module. Example of using CoffeeScript with ES6 code.
+* `src/app/FOLDER` -- Each component of your application should have its own folder.
+* `src/app/todo/todo.js` -- Main entrypoint for the todo application. Sets up all the routes directly related to this app, imports the controller, templates, css, etc.
+* `test` -- This is where the tests live. It has been hard to find examples of good testing practices (especially for angular), so the todo application has very thorough tests for directives and controllers. e2e testing is currently undefined, but will be added soon.
+ 
 ### Install & Run
 
 1. `npm install -g gulp jspm`
@@ -50,7 +67,7 @@ But wait, there's more!
 
 ### Gulp Tasks
 
-- `gulp test` to run karma tests
+- `gulp test` to run karma tests using Chrome
 - `npm test` to run karma tests using PhantomJS (for Travis CI)
 - `gulp lint` to run jshint
 - `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (great for Heroku)
@@ -80,3 +97,9 @@ But wait, there's more!
 - https://github.com/marcj/angular-es6-annotations
 - https://github.com/robianmcd/angular-next
 - https://github.com/ng-next/ng-next-example
+
+### FAQ
+
+Q: I use bower, what happened to it? Can I still use it?
+
+A: jspm is an alternative to bower that is just as functional, but integrates nicely with SystemJS. You can still use bower if you like, but there is no need for it anymore. Bower was originally part of this project, but it has been removed. If you'd like to see what it was like to use it, please see [this commit](https://github.com/lookfirst/systemjs-seed/commit/83c246ee1cabc4e8b3aa2aee49418954e913a1f8) and [this commit](https://github.com/lookfirst/systemjs-seed/commit/377ae05f9425c8969682bf328f207e0dcc8c3c8e).
