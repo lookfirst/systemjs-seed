@@ -9,6 +9,7 @@ var _ = require('lodash');
 var path = {
 	source: 'src/**/*.js',
 	coffee: 'src/**/*.coffee',
+	react: 'src/**/*.jsx',
 	html: '**/*.html',
 	templates: ['src/**/*.tpl.html', '!src/index.tpl.html'],
 	less: ['src/**/*.less', '!src/assets/**/*.less'],
@@ -86,7 +87,7 @@ var routeBundleConfig = {
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('less', {taskName: 'less', src: path.less, dest: path.output});
 taskMaker.defineTask('less', {taskName: 'less-themes', src: path.themes, dest: path.themesOutput});
-taskMaker.defineTask('es6', {taskName: 'es6', src: path.source, dest: path.output, ngAnnotate: true});
+taskMaker.defineTask('es6', {taskName: 'es6', src: [path.source, path.react], dest: path.output, ngAnnotate: true});
 taskMaker.defineTask('es6', {taskName: 'es6-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true});
 taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output});
 taskMaker.defineTask('copy', {taskName: 'copy', src: path.assets, dest: path.output});

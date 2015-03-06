@@ -6,6 +6,12 @@
 		"src": "app/todo/todo"
 	},
 	{
+		"stateName": "react",
+		"urlPrefix": "/react",
+		"type": "load",
+		"src": "app/react/exampleApplication"
+	},
+	{
 		"stateName": "login",
 		"urlPrefix": "/login",
 		"type": "load",

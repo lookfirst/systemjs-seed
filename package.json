@@ -4,7 +4,7 @@
   "description": "seed project for systemjs and angular",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-helpers": "^1.1.12",
+    "gulp-helpers": "^1.1.15",
     "jspm": "^0.14.0",
     "lodash": "^3.3.1",
     "run-sequence": "^1.0.2"
@@ -24,6 +24,7 @@
       "babel": "npm:babel@^4.6.6",
       "css": "github:systemjs/plugin-css@^0.1.5",
       "json": "github:systemjs/plugin-json@^0.1.0",
+      "ngreact": "npm:ngreact@^0.1.4",
       "oclazyload": "npm:oclazyload@^0.6.2",
       "todomvc-app-css": "npm:todomvc-app-css@^1.0.1",
       "todomvc-common": "npm:todomvc-common@^1.0.1",
