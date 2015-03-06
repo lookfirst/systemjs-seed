@@ -4,6 +4,7 @@ var gulpHelpers = require('gulp-helpers');
 var taskMaker = gulpHelpers.taskMaker(gulp);
 var situation = gulpHelpers.situation();
 var runSequence = require('run-sequence');
+var _ = require('lodash');
 
 var path = {
 	source: 'src/**/*.js',
@@ -26,42 +27,32 @@ var path = {
 var routes = require(path.routes);
 var routesSrc = routes.map(function(r) { return r.src; });
 
-var serverOptions;
+var serverOptions = {
+	open: false,
+	ui: false,
+	notify: false,
+	ghostMode: false,
+	port: process.env.PORT || 9000,
+	server: {
+		baseDir: [path.output],
+		routes: {
+			'/jspm_packages': './jspm_packages'
+		}
+	}
+};
+
 if (situation.isProduction()) {
-	serverOptions = {
-		open: false,
-		ui: false,
-		notify: false,
-		ghostMode: false,
+	serverOptions = _.merge(serverOptions, {
 		codeSync: false,
 		reloadOnRestart: false,
-		port: process.env.PORT || 9000,
 		server: {
-			baseDir: [path.output],
-			routes: {
-				'/jspm_packages': './jspm_packages'
-			},
 			snippetOptions: {
 				rule: {
 					match: /qqqqqqqqqqq/
 				}
 			}
 		}
-	};
-} else if (situation.isDevelopment()) {
-	serverOptions = {
-		open: false,
-		ui: false,
-		notify: false,
-		ghostMode: false,
-		port: process.env.PORT || 9000,
-		server: {
-			baseDir: [path.output],
-			routes: {
-				'/jspm_packages': './jspm_packages'
-			}
-		}
-	};
+	});
 }
 
 var cacheBustConfig = {
@@ -92,105 +83,23 @@ var routeBundleConfig = {
 	destJs: 'dist/app/app.js'
 };
 
-taskMaker.defineTask('clean', {
-	src: path.output
-});
-
-taskMaker.defineTask('less', {
-	src: path.less,
-	dest: path.output
-});
-
-taskMaker.defineTask('less', {
-	taskName: 'less-themes',
-	src: path.themes,
-	dest: path.themesOutput
-});
-
-taskMaker.defineTask('es6', {
-	src: path.source,
-	dest: path.output,
-	ngAnnotate: true
-});
-
-taskMaker.defineTask('es6', {
-	taskName: 'es6-coffee',
-	src: path.coffee,
-	dest: path.output,
-	coffee: true,
-	ngAnnotate: true
-});
-
-taskMaker.defineTask('ngHtml2Js', {
-	taskName: 'html',
-	src: path.templates,
-	dest: path.output
-});
-
-taskMaker.defineTask('copy', {
-	src: path.assets,
-	dest: path.output
-});
-
-taskMaker.defineTask('copy', {
-	taskName: 'json',
-	src: path.json,
-	dest: path.output,
-	changed: {
-		extension: '.json'
-	}
-});
-
-taskMaker.defineTask('copy', {
-	taskName: 'index.html',
-	src: path.index,
-	dest: path.output,
-	rename: 'index.html'
-});
-
-taskMaker.defineTask('copy', {
-	taskName: 'cache-bust-index.html',
-	src: path.index,
-	dest: path.output,
-	rename: 'index.html',
-	replace: cacheBustConfig
-});
-
-taskMaker.defineTask('htmlMinify', {
-	taskName: 'htmlMinify-index.html',
-	taskDeps: ['cache-bust-index.html'],
-	src: path.indexHtmlOutput,
-	dest: path.output
-});
-
-taskMaker.defineTask('watch', {
-	src: path.watch,
-	tasks: ['compile', 'index.html', 'lint']
-});
-
-taskMaker.defineTask('minify', {
-	src: path.minify,
-	dest: path.output
-});
-
-taskMaker.defineTask('jshint', {
-	taskName: 'lint',
-	src: path.source
-});
-
-taskMaker.defineTask('karma', {
-	configFile: path.karmaConfig
-});
-
-taskMaker.defineTask('browserSync', {
-	taskName: 'serve',
-	config: serverOptions,
-	historyApiFallback: true
-});
-
-taskMaker.defineTask('routeBundler', {
-	config: routeBundleConfig
-});
+taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
+taskMaker.defineTask('less', {taskName: 'less', src: path.less, dest: path.output});
+taskMaker.defineTask('less', {taskName: 'less-themes', src: path.themes, dest: path.themesOutput});
+taskMaker.defineTask('es6', {taskName: 'es6', src: path.source, dest: path.output, ngAnnotate: true});
+taskMaker.defineTask('es6', {taskName: 'es6-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true});
+taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output});
+taskMaker.defineTask('copy', {taskName: 'copy', src: path.assets, dest: path.output});
+taskMaker.defineTask('copy', {taskName: 'json', src: path.json, dest: path.output, changed: {extension: '.json'}});
+taskMaker.defineTask('copy', {taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html'});
+taskMaker.defineTask('copy', {taskName: 'cache-bust-index.html', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig});
+taskMaker.defineTask('htmlMinify', {taskName: 'htmlMinify-index.html', taskDeps: ['cache-bust-index.html'], src: path.indexHtmlOutput, dest: path.output});
+taskMaker.defineTask('watch', {taskName: 'watch', src: path.watch, tasks: ['compile', 'index.html', 'lint']});
+taskMaker.defineTask('minify', {taskName: 'minify', src: path.minify, dest: path.output});
+taskMaker.defineTask('jshint', {taskName: 'lint', src: path.source});
+taskMaker.defineTask('karma', {taskName: 'karma', configFile: path.karmaConfig});
+taskMaker.defineTask('browserSync', {taskName: 'serve', config: serverOptions, historyApiFallback: true});
+taskMaker.defineTask('routeBundler', {taskName: 'routeBundler', config: routeBundleConfig});
 
 gulp.task('compile', function(callback) {
 	return runSequence(['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'copy'], callback);
