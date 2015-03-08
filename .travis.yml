@@ -3,7 +3,6 @@ node_js:
 - '0.12'
 - '0.11'
 - '0.10'
-- 'iojs'
 branches:
   only:
   - master
@@ -27,6 +26,5 @@ notifications:
   email:
   - latchkey@gmail.com
 env:
-- DISPLAY=':99.0'
   global:
   - secure: Dm2z7xuOcqK+KauO6lQVyKaHgCEX0bjS6mCbwFofETa5XQABQIuy9iS9z56LxmPlw4cor12FvxCArNLmKFNnwOCd5JZ+C2qTKaDLPNWsIHL0B49AIFL6RBHAJ7htAdCH00t/Jp1JHKjcBEl1srQKPV7CZwDQlIHHzPwC4ll3GQ4=
