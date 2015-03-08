@@ -26,7 +26,7 @@ This project does everything the parent project does:
 
 But wait, there's more!
 
-- Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) ([with tests](https://github.com/lookfirst/systemjs-seed/tree/master/test/app/todo)!)
+- Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) ([with unit and e2e tests](https://github.com/lookfirst/systemjs-seed/tree/master/test/app/todo)!)
 - Adds support for CoffeeScript (optional)
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `run` and `default` gulp targets
@@ -39,7 +39,7 @@ But wait, there's more!
 - Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests inline
 - Moves all tests to a separate folder to prevent leakage into `dist`
 - Minifies HTML in production
-- Runs in Travis CI using PhantomJS
+- Runs tests on Travis CI using PhantomJS and Protractor
 
 ## How to use this project
 
