@@ -6,18 +6,24 @@ node_js:
 branches:
   only:
   - master
-script:
+before_install:
+- npm install jspm
+- jspm config endpoints.github.auth $GH_TOKEN
+install:
 - npm install
+script:
 - npm test
+- gulp run &
+- npm run-script start-protractor
+- sleep 10
+- npm run-script protractor
 cache:
   directories:
   - node_modules
+  - jspm_packages
 notifications:
   email:
   - latchkey@gmail.com
 env:
   global:
   - secure: Dm2z7xuOcqK+KauO6lQVyKaHgCEX0bjS6mCbwFofETa5XQABQIuy9iS9z56LxmPlw4cor12FvxCArNLmKFNnwOCd5JZ+C2qTKaDLPNWsIHL0B49AIFL6RBHAJ7htAdCH00t/Jp1JHKjcBEl1srQKPV7CZwDQlIHHzPwC4ll3GQ4=
-before_install:
-- npm install jspm
-- jspm config endpoints.github.auth $GH_TOKEN

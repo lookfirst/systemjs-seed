@@ -7,6 +7,7 @@
     "gulp-helpers": "^1.1.12",
     "jspm": "^0.14.0",
     "lodash": "^3.3.1",
+    "protractor": "^1.8.0",
     "run-sequence": "^1.0.2"
   },
   "dependencies": {},
@@ -36,6 +37,8 @@
   },
   "scripts": {
     "postinstall": "jspm install",
-    "test": "gulp recompile && node_modules/gulp-helpers/node_modules/karma/bin/karma  start --single-run --browsers PhantomJS"
+    "test": "gulp recompile && node_modules/gulp-helpers/node_modules/karma/bin/karma  start --single-run --browsers PhantomJS",
+    "start-protractor": "webdriver-manager update --standalone && webdriver-manager start &",
+    "protractor": "gulp es6-e2e && protractor protractor.conf.js"
   }
 }

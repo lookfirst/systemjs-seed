@@ -1,6 +1,7 @@
 .idea
 coverage
 dist
+test-compile
 jspm_packages
 node_modules
 
