@@ -6,15 +6,16 @@ node_js:
 branches:
   only:
   - master
+addons:
+  sauce_connect:
+    username: latchkey
+    access_key: $SAUCELABS_KEY
 before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 - npm install jspm
 - jspm config endpoints.github.auth $GH_TOKEN
-- ./.travis.chrome.sh
-- alias google-chrome='google-chrome --no-sandbox $1'
-- alias chrome='chrome --no-sandbox $1'
-- export DISPLAY=:99.0
-- export CHROME_BIN="google-chrome"
-- sh -e /etc/init.d/xvfb start
 install:
 - npm install
 script:
@@ -33,3 +34,4 @@ notifications:
 env:
   global:
   - secure: Dm2z7xuOcqK+KauO6lQVyKaHgCEX0bjS6mCbwFofETa5XQABQIuy9iS9z56LxmPlw4cor12FvxCArNLmKFNnwOCd5JZ+C2qTKaDLPNWsIHL0B49AIFL6RBHAJ7htAdCH00t/Jp1JHKjcBEl1srQKPV7CZwDQlIHHzPwC4ll3GQ4=
+  - secure: Oxaf22BOLi9umUVU8Jk6r6INd+yZO5CLOXJ5ylv+56HR5gOTuIrY2RbJR/FwekSH5Pn+nCQaugxVlaZloqneP3/HymEqu7rkijLC/hg6tpTosf40vAqsOsO+CWxN1TfQSMjKVUiFxGGf/8rBLGQI7yv4lqGQQZ1zUl21ZOsU9aI=

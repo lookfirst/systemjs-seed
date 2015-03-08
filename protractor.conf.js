@@ -1,4 +1,4 @@
-exports.config = {
+var config = {
 	// The advantage of directly connecting to browser drivers is that your test scripts may start up and run faster.
 	directConnect: true,
 
@@ -14,10 +14,7 @@ exports.config = {
 
 	// Capabilities to be passed to the webdriver instance.
 	capabilities: {
-		'browserName': 'chrome',
-		'args': [
-			'--no-sandbox'
-		]
+		'browserName': 'chrome'
 	},
 
 	// Spec patterns are relative to the configuration file location passed
@@ -33,3 +30,13 @@ exports.config = {
 		showColors: true // Use colors in the command line report.
 	}
 };
+
+var env = process.env;
+if (env.SAUCELABS_KEY) {
+	config.directConnect = false;
+	config.name = env.TRAVIS_JOB_NUMBER;
+	config.sauceUser = 'latchkey';
+	config.sauceKey = env.SAUCELABS_KEY;
+}
+
+exports.config = config;
