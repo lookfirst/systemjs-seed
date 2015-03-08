@@ -1,0 +1,27 @@
+<div class="exampleApplication" ng-controller="ReactCtrl">
+	<div class="content">
+		<div class="header">
+			<h1>
+				<div><react-component name="Hello" props="person"/></div>
+				<small>
+					<code>&lt;react-component name="Hello" props="person"/&gt;</code>
+				</small>
+			</h1>
+			<h1>
+				<div><hello fname="person.fname" lname="person.lname"/></div>
+				<small>
+					<code>&lt;hello fname="person.fname" lname="person.lname"/&gt;</code>
+				</small>
+			</h1>
+		</div>
+
+		<form class="pure-form">
+			<fieldset>
+				<legend>Enter Name</legend>
+				<input type="text" ng-model="person.fname" placeholder="First Name"/>
+				<input type="text" ng-model="person.lname" placeholder="Last Name"/>
+			</fieldset>
+		</form>
+
+	</div>
+</div>

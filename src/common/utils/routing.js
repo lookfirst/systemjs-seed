@@ -29,6 +29,8 @@ export default function(module) {
 
 						$ocLazyLoad.load(newModule).then(function() {
 							def.resolve();
+						}, function(err) {
+							throw err;
 						});
 					});
 

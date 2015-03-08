@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/lookfirst/systemjs-seed.svg)](https://travis-ci.org/lookfirst/systemjs-seed)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lookfirst/systemjs-seed)
 
-# SystemJS + AngularJS
+# SystemJS + AngularJS + React
 
-Seed project for ES6 modules via SystemJS with ES6 syntax using Babel (was: 6to5) that lazy-load and bundle build with AngularJS.
+Seed project for ES6 modules via SystemJS with ES6 syntax using Babel (was: 6to5) that lazy-load and bundle build with AngularJS and React.
 
 Based heavily off the *excellent* [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) project.
 
@@ -28,6 +28,7 @@ But wait, there's more!
 
 - Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) ([with unit and e2e tests](https://github.com/lookfirst/systemjs-seed/tree/master/test/app/todo)!)
 - Adds support for CoffeeScript (optional)
+- Adds support for React (through [ngReact](https://github.com/davidchang/ngReact))
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `run` and `default` gulp targets
 - Project is served from the `dist` folder for security
@@ -56,6 +57,7 @@ This should give you an idea of how to get started with building your own projec
 * `src/app/app.coffee` -- Bootstraps angular and is the top level module. Example of using CoffeeScript with ES6 code.
 * `src/app/FOLDER` -- Each component of your application should have its own folder.
 * `src/app/todo/todo.js` -- Main entrypoint for the todo application. Sets up all the routes directly related to this app, imports the controller, templates, css, etc.
+* `src/app/react/exampleApplication.jsx` -- Main entrypoint for the example React application.
 * `test` -- This is where the tests live. It has been hard to find examples of good testing practices (especially for angular), so the todo application has very thorough tests for directives and controllers. e2e testing is currently undefined, but will be added soon.
  
 ### Install & Run
@@ -81,6 +83,8 @@ This should give you an idea of how to get started with building your own projec
 - [jspm](http://jspm.io/)
 - [Babel](http://babeljs.io/)
 - [SystemJS](https://github.com/systemjs/systemjs)
+- [AngularJS](http://angularjs.org)
+- [React](http://facebook.github.io/react/)
 
 ### Best Practices
 
