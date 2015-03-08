@@ -15,9 +15,9 @@ install:
 script:
 - npm test
 - gulp run &
-- npm run-script start-protractor
+- npm run-script protractor-setup
 - sleep 10
-- npm run-script protractor
+- npm run-script protractor-run
 cache:
   directories:
   - node_modules

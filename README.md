@@ -26,9 +26,9 @@ This project does everything the parent project does:
 
 But wait, there's more!
 
-- Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) ([with unit and e2e tests](https://github.com/lookfirst/systemjs-seed/tree/master/test/app/todo)!)
+- Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) (with [unit](https://github.com/lookfirst/systemjs-seed/tree/master/test-unit/app/todo) and [e2e](https://github.com/lookfirst/systemjs-seed/tree/master/test-e2e/app/todo) tests!)
 - Adds support for CoffeeScript (optional)
-- Adds support for React (through [ngReact](https://github.com/davidchang/ngReact))
+- Adds support for Facebook React (through [ngReact](https://github.com/davidchang/ngReact))
 - Uses [gulp-helpers](https://github.com/lookfirst/gulp-helpers) to DRY the gulpfile
 - Adds `run` and `default` gulp targets
 - Project is served from the `dist` folder for security
@@ -40,7 +40,7 @@ But wait, there's more!
 - Uses the [karma-babel-preprocessor](https://github.com/babel/karma-babel-preprocessor) to ES6 compile tests inline
 - Moves all tests to a separate folder to prevent leakage into `dist`
 - Minifies HTML in production
-- Runs tests on Travis CI using PhantomJS and Protractor
+- Runs tests on Travis CI using Karma / PhantomJS and Protractor
 
 ## How to use this project
 
@@ -58,7 +58,8 @@ This should give you an idea of how to get started with building your own projec
 * `src/app/FOLDER` -- Each component of your application should have its own folder.
 * `src/app/todo/todo.js` -- Main entrypoint for the todo application. Sets up all the routes directly related to this app, imports the controller, templates, css, etc.
 * `src/app/react/exampleApplication.jsx` -- Main entrypoint for the example React application.
-* `test` -- This is where the tests live. It has been hard to find examples of good testing practices (especially for angular), so the todo application has very thorough tests for directives and controllers. e2e testing is currently undefined, but will be added soon.
+* `test-unit` -- Unit tests using Karma/Jasmine/ES6. It has been hard to find examples of good testing practices (especially for angular), so the todo application has very thorough tests for directives and controllers.
+* `test-e2e` -- e2e tests using Protractor/Jasmine/ES6.
  
 ### Install & Run
 
@@ -67,12 +68,13 @@ This should give you an idea of how to get started with building your own projec
 3. `gulp run`
 4. Browse to `http://localhost:9000`
 
-### Gulp Tasks
+### Tasks
 
-- `gulp test` to run karma tests using Chrome
-- `npm test` to run karma tests using PhantomJS (for Travis CI)
-- `gulp lint` to run jshint
-- `export SITUATION=production && gulp run` to bundle, cache bust, minify and run in production mode (great for Heroku)
+- `gulp test` -- run karma tests using Chrome
+- `npm test` -- run karma tests using PhantomJS (for Travis CI)
+- `npm run-script protractor-setup; npm run-script protractor-run` -- setup and run protractor (for Travis CI)
+- `gulp lint` -- run jshint
+- `export SITUATION=production && gulp run` -- bundle, cache bust, minify and run in production mode (great for Heroku)
 
 ### Tooling
 
@@ -80,11 +82,14 @@ This should give you an idea of how to get started with building your own projec
 - [EditorConfig](http://editorconfig.org/)
 - [JSHint](http://jshint.com/install/)
 - [Karma](http://karma-runner.github.io)
+- [Protractor](http://angular.github.io/protractor/)
 - [jspm](http://jspm.io/)
 - [Babel](http://babeljs.io/)
 - [SystemJS](https://github.com/systemjs/systemjs)
 - [AngularJS](http://angularjs.org)
 - [React](http://facebook.github.io/react/)
+- [ocLazyLoad](https://github.com/ocombe/ocLazyLoad/)
+- [Angular UI-Router](https://github.com/angular-ui/ui-router/)
 
 ### Best Practices
 

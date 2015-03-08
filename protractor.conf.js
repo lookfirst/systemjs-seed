@@ -1,4 +1,7 @@
 exports.config = {
+	// The advantage of directly connecting to browser drivers is that your test scripts may start up and run faster.
+	directConnect: true,
+
 	// https://github.com/angular/protractor/blob/master/docs/jasmine-upgrade.md
 	framework: 'jasmine2',
 
@@ -17,7 +20,7 @@ exports.config = {
 	// Spec patterns are relative to the configuration file location passed
 	// to proractor (in this example conf.js).
 	// They may include glob patterns.
-	specs: ['test-compile/**/*.e2e.js'],
+	specs: ['test-e2e-compile/**/*.e2e.js'],
 
 	// Options to be passed to Jasmine-node.
 	jasmineNodeOpts: {
