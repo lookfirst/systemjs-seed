@@ -33,10 +33,12 @@ var config = {
 
 var env = process.env;
 if (env.SAUCELABS_KEY) {
+	delete config.seleniumAddress;
 	config.directConnect = false;
 	config.name = env.TRAVIS_JOB_NUMBER;
 	config.sauceUser = 'latchkey';
 	config.sauceKey = env.SAUCELABS_KEY;
+	config.sauceSeleniumAddress = 'http://localhost:4445/wd/hub';
 }
 
 exports.config = config;
