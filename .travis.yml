@@ -10,8 +10,10 @@ before_install:
 - npm install jspm
 - jspm config endpoints.github.auth $GH_TOKEN
 - ./.travis.chrome.sh
+- alias google-chrome='google-chrome --no-sandbox $1'
+- alias chrome='chrome --no-sandbox $1'
 - export DISPLAY=:99.0
-- export CHROME_BIN="google-chrome --no-sandbox"
+- export CHROME_BIN="google-chrome"
 - sh -e /etc/init.d/xvfb start
 install:
 - npm install
