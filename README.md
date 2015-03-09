@@ -7,6 +7,23 @@
 
 Seed project for ES6 modules via SystemJS with ES6 syntax using Babel (was: 6to5) that lazy-load and bundle build with AngularJS and React.
 
+## Motivation
+
+For a long time now, I've wanted to create a JavaScript single page app seed project that has the following qualities:
+
+- Treats both unit and e2e testing as first class citizens
+- Build file that was easy to understand (more configuration, less code)
+- Package manager for installing dependencies, regardless of whether they live on npm or github
+- Handles transpiling easily
+- Minify across routes instead of as a single giant file (with cross route dependencies in their own files)
+- Can run in production / minified mode locally for testing
+- Ablility to plug in whatever framework of the week
+- Imports for everything
+
+Thankfully, after a long wait for the technology to catch up and a lot of blood sweat and tears, this project is alive.
+
+## Features
+
 Based heavily off the *excellent* [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) project.
 
 This project does everything the parent project does:
