@@ -38,7 +38,7 @@ if (env.SAUCELABS_KEY) {
 	config.name = env.TRAVIS_JOB_NUMBER;
 	config.sauceUser = 'latchkey';
 	config.sauceKey = env.SAUCELABS_KEY;
-	config.sauceSeleniumAddress = 'http://localhost:4445/wd/hub';
+	config.sauceSeleniumAddress = 'localhost:4445/wd/hub';
 }
 
 exports.config = config;
