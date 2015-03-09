@@ -112,3 +112,7 @@ This should give you an idea of how to get started with building your own projec
 Q: I use bower, what happened to it? Can I still use it?
 
 A: jspm is an alternative to bower that is just as functional, but integrates nicely with SystemJS. You can still use bower if you like, but there is no need for it anymore. Bower was originally part of this project, but it has been removed. If you'd like to see what it was like to use it, please see [this commit](https://github.com/lookfirst/systemjs-seed/commit/83c246ee1cabc4e8b3aa2aee49418954e913a1f8) and [this commit](https://github.com/lookfirst/systemjs-seed/commit/377ae05f9425c8969682bf328f207e0dcc8c3c8e).
+
+Q: What about integrating other frameworks like [Ember](http://emberjs.com/) or [Riot](https://muut.com/riotjs/)?
+
+A: Sure! It is just a matter of including the dependencies (using jspm) and using them as you normally would. I'm a fan of Angular, but I realize that React is getting popular too. ngReact is the perfect combination of the DI/Service system of Angular and the component model of React. If you like other frameworks, you are free to use those as well. Pull requests for examples are welcome!
