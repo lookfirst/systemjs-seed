@@ -1,4 +1,4 @@
-sudo: false  # send things to the new build platform
+#sudo: false  # send things to the new build platform
 language: node_js
 node_js:
 - '0.12'
@@ -21,7 +21,7 @@ script:
 - npm run-script protractor-setup
 - export SITUATION=production
 - gulp run &
-- sleep 90
+- sleep 100
 - npm run-script protractor-run
 cache:
   directories:
