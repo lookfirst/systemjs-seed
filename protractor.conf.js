@@ -14,10 +14,11 @@ exports.config = {
 
 	// Capabilities to be passed to the webdriver instance.
 	capabilities: {
-		'browserName': 'chrome',
-		'chromeOptions': {
-			'args': ['no-sandbox']
-		}
+		'browserName': 'chrome'
+		//,
+		//'chromeOptions': {
+		//	'args': ['no-sandbox']
+		//}
 	},
 
 	// Spec patterns are relative to the configuration file location passed
