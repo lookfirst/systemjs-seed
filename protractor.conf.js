@@ -1,4 +1,4 @@
-var config = {
+exports.config = {
 	// The advantage of directly connecting to browser drivers is that your test scripts may start up and run faster.
 	directConnect: true,
 
@@ -33,5 +33,3 @@ var config = {
 		showColors: true // Use colors in the command line report.
 	}
 };
-
-exports.config = config;
