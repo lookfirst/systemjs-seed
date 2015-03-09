@@ -21,7 +21,7 @@ script:
 - npm run-script protractor-setup
 - export SITUATION=production
 - gulp run &
-- sleep 100
+- sleep 120
 - npm run-script protractor-run
 cache:
   directories:
