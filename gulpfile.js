@@ -9,7 +9,7 @@ var _ = require('lodash');
 var path = {
 	source: 'src/**/*.js',
 	coffee: 'src/**/*.coffee',
-	e2e: 'test-e2e/**/*.e2e.js',
+	e2e: 'test-e2e/**/*.js',
 	e2eCompile: 'test-e2e-compile/',
 	react: 'src/**/*.jsx',
 	html: '**/*.html',
