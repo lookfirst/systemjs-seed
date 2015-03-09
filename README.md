@@ -46,8 +46,7 @@ But wait, there's more!
 
 ## How to use this project
 
-Duplicate the repository, don't fork it. The reason for this is that you probably want your own name and do not want github to record that you've forked it. Instructions: https://help.github.com/articles/duplicating-a-repository/
-
+Use the [Yeoman generator](https://github.com/lookfirst/generator-systemjs/) to create your own seed project. This project is based off the generator. You can use this project as an example to see how all the pieces fit together for your own application. 
 ### Layout
 
 This should give you an idea of how to get started with building your own project. Most of the effort required will be actually deleting the existing app examples and building your own.
