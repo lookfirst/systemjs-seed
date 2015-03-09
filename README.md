@@ -55,7 +55,7 @@ This should give you an idea of how to get started with building your own projec
 * `src/system.config.js` -- Where jspm manages all of its installed dependencies.
 * `src/index.tpl.html` -- The main entrypoint for the application. This loads `system.js`, `system.config.js` and the application.
 * `src/app/routes.json` -- Declare all of your top level routes here.
-* `src/app/app.coffee` -- Bootstraps angular and is the top level module. Example of using CoffeeScript with ES6 code.
+* `src/app/app.js` -- Bootstraps angular and is the top level module. Example of using CoffeeScript with ES6 code.
 * `src/app/FOLDER` -- Each component of your application should have its own folder.
 * `src/app/todo/todo.js` -- Main entrypoint for the todo application. Sets up all the routes directly related to this app, imports the controller, templates, css, etc.
 * `src/app/react/exampleApplication.jsx` -- Main entrypoint for the example React application.
