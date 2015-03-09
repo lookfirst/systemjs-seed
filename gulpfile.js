@@ -1,10 +1,9 @@
-var fs = require('fs');
 var gulp = require('gulp');
 var gulpHelpers = require('gulp-helpers');
 var taskMaker = gulpHelpers.taskMaker(gulp);
 var situation = gulpHelpers.situation();
-var runSequence = require('run-sequence');
-var _ = require('lodash');
+var _ = gulpHelpers.framework('_');
+var runSequence = gulpHelpers.framework('run-sequence');
 
 var path = {
 	source: 'src/**/*.js',
