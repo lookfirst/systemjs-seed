@@ -14,7 +14,8 @@ For a long time now, I've wanted to create a JavaScript single page app seed pro
 - Treats both unit and e2e testing as first class citizens
 - Build file that was easy to understand (more configuration, less code)
 - Package manager for installing dependencies, regardless of whether they live on npm or github
-- Handles transpiling easily
+- Handles transpiling by suffix
+- Debugging shows me exactly where the error is
 - Minify across routes instead of as a single giant file (with cross route dependencies in their own files)
 - Can run in production / minified mode locally for testing
 - Ablility to plug in whatever framework of the week
