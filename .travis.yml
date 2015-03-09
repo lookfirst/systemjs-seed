@@ -16,10 +16,10 @@ install:
 - npm install
 script:
 - npm test
+- npm run-script protractor-setup
 - export SITUATION=production
 - gulp run &
-- sleep 60
-- npm run-script protractor-setup
+- sleep 120
 - npm run-script protractor-run
 cache:
   directories:
