@@ -6,10 +6,6 @@ node_js:
 branches:
   only:
   - master
-addons:
-  sauce_connect:
-    username: latchkey
-    access_key: $SAUCELABS_KEY
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
@@ -20,9 +16,10 @@ install:
 - npm install
 script:
 - npm test
+- export SITUATION=production
 - gulp run &
+- sleep 60
 - npm run-script protractor-setup
-- sleep 10
 - npm run-script protractor-run
 cache:
   directories:
