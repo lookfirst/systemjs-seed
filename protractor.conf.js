@@ -23,7 +23,7 @@ exports.config = {
 	// Spec patterns are relative to the configuration file location passed
 	// to proractor (in this example conf.js).
 	// They may include glob patterns.
-	specs: ['test-e2e-compile/**/*.e2e.js'],
+	specs: ['test-e2e-compile/**/*.js'],
 
 	// Options to be passed to Jasmine-node.
 	jasmineNodeOpts: {
