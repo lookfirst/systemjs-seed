@@ -14,7 +14,10 @@ var config = {
 
 	// Capabilities to be passed to the webdriver instance.
 	capabilities: {
-		'browserName': 'chrome'
+		'browserName': 'chrome',
+		'chromeOptions': {
+			'args': ['no-sandbox']
+		}
 	},
 
 	// Spec patterns are relative to the configuration file location passed
@@ -30,15 +33,5 @@ var config = {
 		showColors: true // Use colors in the command line report.
 	}
 };
-
-var env = process.env;
-if (env.SAUCELABS_KEY) {
-	delete config.seleniumAddress;
-	config.directConnect = false;
-	config.name = env.TRAVIS_JOB_NUMBER;
-	config.sauceUser = 'latchkey';
-	config.sauceKey = env.SAUCELABS_KEY;
-	config.sauceSeleniumAddress = 'localhost:4445/wd/hub';
-}
 
 exports.config = config;
