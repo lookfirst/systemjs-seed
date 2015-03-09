@@ -26,6 +26,7 @@ This project does everything the parent project does:
 
 But wait, there's more!
 
+- Built from a [Yeoman generator](https://github.com/lookfirst/generator-systemjs) for reproducible project builds
 - Adds example [TodoMVC app](https://github.com/lookfirst/systemjs-seed/tree/master/src/app/todo) (with [unit](https://github.com/lookfirst/systemjs-seed/tree/master/test-unit/app/todo) and [e2e](https://github.com/lookfirst/systemjs-seed/tree/master/test-e2e/app/todo) tests!)
 - Adds support for CoffeeScript (optional)
 - Adds support for Facebook React (through [ngReact](https://github.com/davidchang/ngReact))
