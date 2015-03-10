@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/lookfirst/systemjs-seed.svg)](https://travis-ci.org/lookfirst/systemjs-seed)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lookfirst/systemjs-seed)
 
-# SystemJS + AngularJS + React
+# SystemJS + ES6 + AngularJS + React
 
 Seed project for ES6 modules via SystemJS with ES6 syntax using Babel (was: 6to5) that lazy-load and bundle build with AngularJS and React.
 
