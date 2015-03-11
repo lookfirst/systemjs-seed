@@ -3,8 +3,6 @@ import angular from 'angular';
 import router from 'oclazyload-systemjs-router';
 import futureRoutes from 'app/routes.json!';
 
-debugger;
-
 var appModule = angular.module('app', []);
 
 appModule.config(router(appModule, futureRoutes));
