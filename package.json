@@ -26,7 +26,8 @@
       "json": "github:systemjs/plugin-json@^0.1.0",
       "ngreact": "npm:ngreact@^0.1.4",
       "oclazyload": "npm:oclazyload@^0.6.3",
-      "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@^1.0.6",
+      "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@^1.0.7",
+      "react": "npm:react@^0.13.0",
       "todomvc-app-css": "npm:todomvc-app-css@^1.0.1",
       "todomvc-common": "npm:todomvc-common@^1.0.1",
       "ui-router-extras": "npm:ui-router-extras@^0.0.13"

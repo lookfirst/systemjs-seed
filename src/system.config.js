@@ -20,10 +20,8 @@ System.config({
     "json": "github:systemjs/plugin-json@0.1.0",
     "ngreact": "npm:ngreact@0.1.4",
     "oclazyload": "npm:oclazyload@0.6.3",
-    "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@1.0.6",
-    "plugin-css": "github:systemjs/plugin-css@0.1.5",
-    "plugin-json": "github:systemjs/plugin-json@0.1.0",
-    "react": "npm:react@0.12.2",
+    "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@1.0.7",
+    "react": "npm:react@0.13.0",
     "todomvc-app-css": "npm:todomvc-app-css@1.0.1",
     "todomvc-common": "npm:todomvc-common@1.0.1",
     "ui-router-extras": "npm:ui-router-extras@0.0.13",
@@ -91,10 +89,6 @@ System.config({
     },
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
-    },
-    "github:systemjs/plugin-css@0.1.5": {
-      "clean-css": "npm:clean-css@3.0.10",
-      "fs": "github:jspm/nodelibs-fs@0.1.1"
     },
     "github:systemjs/plugin-css@0.1.6": {
       "clean-css": "npm:clean-css@3.0.10",
@@ -741,13 +735,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "querystring": "github:jspm/nodelibs-querystring@0.1.0"
     },
-    "npm:oclazyload-systemjs-router@1.0.5": {
-      "angular": "npm:angular@1.3.14",
-      "angular-ui-router": "npm:angular-ui-router@0.2.13",
-      "oclazyload": "npm:oclazyload@0.6.3",
-      "ui-router-extras": "npm:ui-router-extras@0.0.13"
-    },
-    "npm:oclazyload-systemjs-router@1.0.6": {
+    "npm:oclazyload-systemjs-router@1.0.7": {
       "angular": "npm:angular@1.3.14",
       "angular-ui-router": "npm:angular-ui-router@0.2.13",
       "oclazyload": "npm:oclazyload@0.6.3",
@@ -827,11 +815,6 @@ System.config({
     "npm:randombytes@2.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1"
-    },
-    "npm:react@0.12.2": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "envify": "npm:envify@3.3.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:react@0.13.0": {
