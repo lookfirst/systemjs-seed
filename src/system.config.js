@@ -15,11 +15,12 @@ System.config({
     "angular": "npm:angular@1.3.14",
     "angular-mocks": "npm:angular-mocks@1.3.14",
     "angular-ui-router": "npm:angular-ui-router@0.2.13",
-    "babel": "npm:babel@4.7.4",
+    "babel": "npm:babel@4.7.8",
     "css": "github:systemjs/plugin-css@0.1.6",
     "json": "github:systemjs/plugin-json@0.1.0",
     "ngreact": "npm:ngreact@0.1.4",
     "oclazyload": "npm:oclazyload@0.6.3",
+    "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@1.0.6",
     "plugin-css": "github:systemjs/plugin-css@0.1.5",
     "plugin-json": "github:systemjs/plugin-json@0.1.0",
     "react": "npm:react@0.12.2",
@@ -161,14 +162,14 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "url": "github:jspm/nodelibs-url@0.1.0"
     },
-    "npm:babel@4.7.4": {
+    "npm:babel@4.7.8": {
       "acorn-babel": "npm:acorn-babel@0.11.1-37",
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "ast-types": "npm:ast-types@0.7.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "chalk": "npm:chalk@1.0.0",
       "chokidar": "npm:chokidar@0.12.6",
-      "commander": "npm:commander@2.7.0",
+      "commander": "npm:commander@2.7.1",
       "convert-source-map": "npm:convert-source-map@0.5.0",
       "core-js": "npm:core-js@0.6.1",
       "debug": "npm:debug@2.1.2",
@@ -312,7 +313,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:commander@2.7.0": {
+    "npm:commander@2.7.1": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.1",
@@ -726,7 +727,7 @@ System.config({
     },
     "npm:ngreact@0.1.4": {
       "angular": "npm:angular@1.0.0",
-      "react": "npm:react@0.12.2"
+      "react": "npm:react@0.13.0"
     },
     "npm:node-uuid@1.4.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
@@ -739,6 +740,18 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "querystring": "github:jspm/nodelibs-querystring@0.1.0"
+    },
+    "npm:oclazyload-systemjs-router@1.0.5": {
+      "angular": "npm:angular@1.3.14",
+      "angular-ui-router": "npm:angular-ui-router@0.2.13",
+      "oclazyload": "npm:oclazyload@0.6.3",
+      "ui-router-extras": "npm:ui-router-extras@0.0.13"
+    },
+    "npm:oclazyload-systemjs-router@1.0.6": {
+      "angular": "npm:angular@1.3.14",
+      "angular-ui-router": "npm:angular-ui-router@0.2.13",
+      "oclazyload": "npm:oclazyload@0.6.3",
+      "ui-router-extras": "npm:ui-router-extras@0.0.13"
     },
     "npm:oclazyload@0.6.3": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -817,6 +830,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:react@0.12.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "envify": "npm:envify@3.3.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:react@0.13.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "envify": "npm:envify@3.3.0",
       "process": "github:jspm/nodelibs-process@0.1.1"

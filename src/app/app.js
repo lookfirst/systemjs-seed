@@ -1,9 +1,13 @@
 import angular from 'angular';
-import routing from 'common/utils/routing';
+
+import router from 'oclazyload-systemjs-router';
+import futureRoutes from 'app/routes.json!';
+
+debugger;
 
 var appModule = angular.module('app', []);
 
-appModule.config(routing(appModule));
+appModule.config(router(appModule, futureRoutes));
 
 appModule.config(function($locationProvider, $httpProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode({
