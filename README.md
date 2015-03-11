@@ -63,6 +63,11 @@ But wait, there's more!
 - Minifies HTML in production
 - Runs tests on Travis CI using Karma / PhantomJS and Protractor
 
+## Examples
+
+- This project is an example of using the [Yeoman generator](https://github.com/lookfirst/generator-systemjs/).
+- [Module A](https://github.com/lookfirst/module-a) is an example of a couple of simple directives.
+
 ## How to use this project
 
 Use the [Yeoman generator](https://github.com/lookfirst/generator-systemjs/) to create your own seed project. This project is based off the generator. You can use this project as an example to see how all the pieces fit together for your own application. 
