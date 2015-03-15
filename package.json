@@ -18,19 +18,19 @@
     },
     "configFile": "src/system.config.js",
     "dependencies": {
-      "angular": "npm:angular@^1.3.14",
-      "angular-mocks": "npm:angular-mocks@^1.3.14",
-      "angular-ui-router": "npm:angular-ui-router@^0.2.13",
-      "babel": "npm:babel@^4.7.4",
+      "angular": "github:angular/bower-angular@^1.3.14",
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.3.14",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.13",
+      "babel": "github:babel/babel@^4.7.12",
       "css": "github:systemjs/plugin-css@^0.1.6",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "ngreact": "npm:ngreact@^0.1.4",
-      "oclazyload": "npm:oclazyload@^0.6.3",
-      "oclazyload-systemjs-router": "npm:oclazyload-systemjs-router@^1.0.7",
-      "react": "npm:react@^0.13.0",
-      "todomvc-app-css": "npm:todomvc-app-css@^1.0.1",
-      "todomvc-common": "npm:todomvc-common@^1.0.1",
-      "ui-router-extras": "npm:ui-router-extras@^0.0.13"
+      "ngreact": "github:davidchang/ngReact@^0.1.4",
+      "oclazyload": "github:ocombe/ocLazyLoad@^0.6.3",
+      "oclazyload-systemjs-router": "github:lookfirst/oclazyload-systemjs-router@^1.1.3",
+      "react": "github:facebook/react@^0.13.0",
+      "todomvc-app-css": "github:tastejs/todomvc-app-css@^1.0.2",
+      "todomvc-common": "github:tastejs/todomvc-common@^1.0.1",
+      "ui-router-extras": "github:christopherthielen/ui-router-extras@^0.0.13"
     }
   },
   "repository": {

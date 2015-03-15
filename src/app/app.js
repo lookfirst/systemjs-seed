@@ -5,7 +5,7 @@ import futureRoutes from 'app/routes.json!';
 
 var appModule = angular.module('app', []);
 
-appModule.config(router(appModule, futureRoutes));
+appModule.config(router.default(appModule, futureRoutes));
 
 appModule.config(function($locationProvider, $httpProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode({
