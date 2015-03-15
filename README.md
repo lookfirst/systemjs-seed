@@ -65,8 +65,9 @@ But wait, there's more!
 
 ## Examples
 
-- This project is an example of using the [Yeoman generator](https://github.com/lookfirst/generator-systemjs/).
-- [Module A](https://github.com/lookfirst/module-a) is an example of a couple of simple directives.
+- This project is an example of using the [Yeoman generator](https://github.com/lookfirst/generator-systemjs/)
+- [Module A](https://github.com/lookfirst/module-a) is an example of a couple of simple directives
+- [SystemJS Material Start ES6 project](https://github.com/lookfirst/systemjs-material-start) is an example of setting up Material design under this framework
 
 ## How to use this project
 
