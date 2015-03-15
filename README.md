@@ -24,6 +24,8 @@ For a long time now, I've wanted to create a JavaScript single page app seed pro
 
 Thankfully, after a long wait for the technology to catch up and a lot of blood sweat and tears, this project is alive.
 
+If you like the project, please star / watch it to show your support!
+
 ## Features
 
 Based heavily off the *excellent* [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) project.
