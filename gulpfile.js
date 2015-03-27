@@ -89,9 +89,9 @@ taskMaker.defineTask('clean', {taskName: 'clean', src: path.output, taskDeps: ['
 taskMaker.defineTask('clean', {taskName: 'clean-e2e', src: path.e2eOutput});
 taskMaker.defineTask('less', {taskName: 'less', src: path.less, dest: path.output});
 taskMaker.defineTask('less', {taskName: 'less-themes', src: path.themes, dest: path.themesOutput});
-taskMaker.defineTask('es6', {taskName: 'es6', src: [path.source, path.react], dest: path.output, ngAnnotate: true});
-taskMaker.defineTask('es6', {taskName: 'es6-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true});
-taskMaker.defineTask('es6', {taskName: 'es6-e2e', src: path.e2e, dest: path.e2eOutput, compilerOptions: {externalHelpers: false}, taskDeps: ['clean-e2e']});
+taskMaker.defineTask('babel', {taskName: 'es6', src: [path.source, path.react], dest: path.output, ngAnnotate: true});
+taskMaker.defineTask('babel', {taskName: 'es6-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true});
+taskMaker.defineTask('babel', {taskName: 'es6-e2e', src: path.e2e, dest: path.e2eOutput, compilerOptions: {externalHelpers: false}, taskDeps: ['clean-e2e']});
 taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output});
 taskMaker.defineTask('copy', {taskName: 'copy', src: path.assets, dest: path.output});
 taskMaker.defineTask('copy', {taskName: 'json', src: path.json, dest: path.output, changed: {extension: '.json'}});
