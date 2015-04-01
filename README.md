@@ -144,3 +144,4 @@ A: jspm is an alternative to bower that is just as functional, but integrates ni
 Q: What about integrating other frameworks like [Ember](http://emberjs.com/) or [Riot](https://muut.com/riotjs/)?
 
 A: Sure! It is just a matter of including the dependencies (using jspm) and using them as you normally would. I'm a fan of Angular, but I realize that React is getting popular too. ngReact is the perfect combination of the DI/Service system of Angular and the component model of React. If you like other frameworks, you are free to use those as well. Pull requests for examples are welcome!
+
