@@ -13,7 +13,7 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 - ./.travis.chrome.sh
 - npm install jspm
-- jspm config endpoints.github.auth $GH_TOKEN
+- jspm config registries.github.auth $GH_TOKEN
 install:
 - npm install
 script:
