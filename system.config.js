@@ -2,7 +2,6 @@ System.config({
   "baseURL": ".",
   "transpiler": "babel",
   "babelOptions": {
-    "moduleIds": false,
     "optional": [
       "runtime"
     ]
