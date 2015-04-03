@@ -1,8 +1,3 @@
-
-// This is a hack because systemjs isn't loading this for us. why not?
-// https://github.com/jspm/jspm-cli/issues/633
-require('babel/external-helpers');
-
 import angular from 'angular';
 
 import router from 'oclazyload-systemjs-router';

@@ -33,14 +33,11 @@ module.exports = function(config) {
       // Edit this to your needs
       config: 'system.config.js',
       loadFiles: [
-        'jspm_packages/npm/babel@*/external-helpers.js',
         'test-unit/**/*.js'
 	  ],
       serveFiles: [
-        'dist/**/**',
-        'jspm_packages/**/*.js',
-        'jspm_packages/**/*.css'
-      ]
+        'dist/**/**'
+	  ]
     },
 
     proxies: {
@@ -61,6 +58,13 @@ module.exports = function(config) {
     preprocessors: {
       'test-unit/**/*.js': ['babel', 'coverage']
     },
+
+	'babelPreprocessor': {
+	  options: {
+		  sourceMap: 'inline',
+		  modules: 'system'
+	  }
+	},
 
     // optionally, configure the reporter
     coverageReporter: {
