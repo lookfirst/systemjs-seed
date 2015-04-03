@@ -1,11 +1,11 @@
 {
   "name": "systemjs-seed",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "seed project for systemjs and angular",
   "author": "Jon Stevens <latchkey@gmail.com>",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-helpers": "^1.3.1",
+    "gulp-helpers": "^1.5.2",
     "jspm": "^0.15.1",
     "protractor": "^2.0.0"
   },
