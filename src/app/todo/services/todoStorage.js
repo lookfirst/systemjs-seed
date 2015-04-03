@@ -85,3 +85,5 @@ todoModule.factory('todoStorage', function ($q) {
 		}
 	};
 });
+
+export default todoModule;

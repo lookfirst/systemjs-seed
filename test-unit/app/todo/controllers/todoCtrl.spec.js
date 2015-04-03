@@ -12,7 +12,7 @@ describe('Todo Controller', function () {
 	}
 
 	// Load the module containing the app, only 'ng' is loaded by default.
-	beforeEach(angular.mock.module('todomvc'));
+	beforeEach(angular.mock.module(todoModule.name));
 
 	beforeEach(inject(function (_$rootScope_, _$state_, _todoStorage_) {
 		$rootScope = _$rootScope_;
@@ -94,7 +94,7 @@ describe('Todo Controller', function () {
 				$state: $state
 			});
 
-			goTo('todo.completed')
+			goTo('todo.completed');
 			expect($scope.statusFilter.completed).toBeTruthy();
 		}));
 

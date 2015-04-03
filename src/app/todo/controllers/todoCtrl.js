@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import todoModule from '../todo';
+import todoModule from '../todoModule';
 import '../services/todoStorage';
 import '../directives/todoEscape';
 import '../directives/todoFocus';
