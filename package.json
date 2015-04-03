@@ -41,6 +41,6 @@
     "postinstall": "jspm install",
     "test": "gulp recompile && ./node_modules/gulp-helpers/node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "protractor-setup": "./node_modules/.bin/webdriver-manager update --standalone",
-    "protractor-run": "gulp es6-e2e && ./node_modules/.bin/protractor protractor.conf.js"
+    "protractor-run": "gulp babel-e2e && ./node_modules/.bin/protractor protractor.conf.js"
   }
 }
