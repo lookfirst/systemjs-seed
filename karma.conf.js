@@ -31,7 +31,7 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      config: 'src/system.config.js',
+      config: 'system.config.js',
       loadFiles: [
         'jspm_packages/npm/babel@*/external-helpers.js',
         'test-unit/**/*.js'

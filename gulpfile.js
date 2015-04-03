@@ -24,8 +24,10 @@ var path = {
 	json: './src/**/*.json',
 	index: './src/index.tpl.html',
 	watch: './src/**',
-	karmaConfig: __dirname + '/karma.conf.js'
+	karmaConfig: __dirname + '/karma.conf.js',
+	systemConfig: './system.config.js'
 };
+
 var routes = require(path.routes);
 var routesSrc = routes.map(function(r) { return r.src; });
 
@@ -38,6 +40,7 @@ var serverOptions = {
 	server: {
 		baseDir: [path.output],
 		routes: {
+			'/system.config.js': './system.config.js',
 			'/jspm_packages': './jspm_packages'
 		}
 	}
@@ -78,22 +81,27 @@ var routeBundleConfig = {
 	main: 'app/app',
 	routes: routesSrc,
 	bundleThreshold: 0.6,
-	config: './src/system.config.js',
+	config: path.systemConfig,
 	sourceMaps: true,
 	minify: false,
 	dest: 'dist/app',
 	destJs: 'dist/app/app.js'
 };
 
+var babelCompilerOptions = {
+	modules: 'system'
+};
+
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output, taskDeps: ['clean-e2e']});
 taskMaker.defineTask('clean', {taskName: 'clean-e2e', src: path.e2eOutput});
 taskMaker.defineTask('less', {taskName: 'less', src: path.less, dest: path.output});
 taskMaker.defineTask('less', {taskName: 'less-themes', src: path.themes, dest: path.themesOutput});
-taskMaker.defineTask('babel', {taskName: 'es6', src: [path.source, path.react], dest: path.output, ngAnnotate: true});
-taskMaker.defineTask('babel', {taskName: 'es6-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true});
-taskMaker.defineTask('babel', {taskName: 'es6-e2e', src: path.e2e, dest: path.e2eOutput, compilerOptions: {externalHelpers: false}, taskDeps: ['clean-e2e']});
-taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output});
-taskMaker.defineTask('copy', {taskName: 'copy', src: path.assets, dest: path.output});
+taskMaker.defineTask('babel', {taskName: 'babel', src: [path.source, path.react], dest: path.output, ngAnnotate: true, compilerOptions: babelCompilerOptions});
+taskMaker.defineTask('babel', {taskName: 'babel-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true, compilerOptions: babelCompilerOptions});
+taskMaker.defineTask('babel', {taskName: 'babel-e2e', src: path.e2e, dest: path.e2eOutput, compilerOptions: {externalHelpers: false}, taskDeps: ['clean-e2e']});
+taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output, compilerOptions: babelCompilerOptions});
+taskMaker.defineTask('copy', {taskName: 'systemConfig', src: path.systemConfig, dest: path.output});
+taskMaker.defineTask('copy', {taskName: 'assets', src: path.assets, dest: path.output});
 taskMaker.defineTask('copy', {taskName: 'json', src: path.json, dest: path.output, changed: {extension: '.json'}});
 taskMaker.defineTask('copy', {taskName: 'index.html', src: path.index, dest: path.output, rename: 'index.html'});
 taskMaker.defineTask('copy', {taskName: 'cache-bust-index.html', src: path.index, dest: path.output, rename: 'index.html', replace: cacheBustConfig});
@@ -106,11 +114,11 @@ taskMaker.defineTask('browserSync', {taskName: 'serve', config: serverOptions, h
 taskMaker.defineTask('routeBundler', {taskName: 'routeBundler', config: routeBundleConfig});
 
 gulp.task('compile', function(callback) {
-	return runSequence(['less', 'less-themes', 'html', 'es6', 'es6-coffee', 'json', 'copy'], callback);
+	return runSequence(['less', 'less-themes', 'html', 'babel', 'babel-coffee', 'json', 'assets'], callback);
 });
 
 gulp.task('recompile', function(callback) {
-	return runSequence('clean', 'compile', callback);
+	return runSequence('clean', ['compile'], callback);
 });
 
 gulp.task('test', function(callback) {
