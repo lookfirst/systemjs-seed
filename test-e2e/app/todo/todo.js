@@ -14,7 +14,7 @@ describe('todo homepage', () => {
 
 	beforeEach(function() {
 		browser.get('/todo');
-	})
+	});
 
 	helpers.verifyHeaderElementText('h1', 'todos');
 
