@@ -20,7 +20,7 @@ var path = {
 	indexHtmlOutput: 'dist/index.html',
 	routes: './src/app/routes.json',
 	minify: 'dist/**/*.js',
-	assets: ['./src/**/*.svg', './src/**/*.woff', './src/**/*.ttf', './src/**/*.png', './src/**/*.ico', './src/**/*.gif', './src/**/*.jpg', './src/**/*.eot'],
+	assets: ['./src/**/*.css', './src/**/*.svg', './src/**/*.woff', './src/**/*.ttf', './src/**/*.png', './src/**/*.ico', './src/**/*.gif', './src/**/*.jpg', './src/**/*.eot'],
 	json: './src/**/*.json',
 	index: './src/index.tpl.html',
 	watch: './src/**',
