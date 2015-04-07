@@ -33,3 +33,9 @@ exports.config = {
 		showColors: true // Use colors in the command line report.
 	}
 };
+
+if (process.env.TRAVIS) {
+	exports.config.capabilities.executablePath = __dirname + '/chrome-linux/chrome';
+}
+
+console.log(exports.config);
