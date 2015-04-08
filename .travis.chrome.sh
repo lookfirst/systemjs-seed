@@ -13,8 +13,5 @@
 #
 #chmod 1777 /dev/shm
 
-echo `pwd`
-ls -la /dev/shm
-
 curl -Lo chrome.zip https://download-chromium.appspot.com/dl/Linux_x64
 unzip chrome.zip

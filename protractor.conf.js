@@ -35,7 +35,7 @@ exports.config = {
 };
 
 if (process.env.TRAVIS) {
-	exports.config.capabilities.executablePath = __dirname + '/chrome-linux/chrome';
+	exports.config.capabilities.chromeOptions.binary = __dirname + '/chrome-linux/chrome';
 }
 
-console.log(exports.config);
+console.log(JSON.stringify(exports.config));
