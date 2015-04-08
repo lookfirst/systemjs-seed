@@ -10,7 +10,7 @@ before_install:
 - env
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- ./.travis.chrome.sh
+- curl -L https://download-chromium.appspot.com/dl/Linux_x64 | bsdtar -xvf -
 - npm install jspm
 - jspm config registries.github.auth $GH_TOKEN
 install:

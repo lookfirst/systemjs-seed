@@ -37,5 +37,3 @@ exports.config = {
 if (process.env.TRAVIS) {
 	exports.config.capabilities.chromeOptions.binary = __dirname + '/chrome-linux/chrome';
 }
-
-console.log(JSON.stringify(exports.config));
