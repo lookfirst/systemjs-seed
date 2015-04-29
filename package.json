@@ -1,6 +1,6 @@
 {
   "name": "systemjs-seed",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "seed project for systemjs and angular",
   "author": "Jon Stevens <latchkey@gmail.com>",
   "devDependencies": {
