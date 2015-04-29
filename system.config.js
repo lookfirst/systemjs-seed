@@ -21,15 +21,15 @@ System.config({
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
-    "core-js": "npm:core-js@0.8.4",
-    "css": "github:systemjs/plugin-css@0.1.9",
+    "core-js": "npm:core-js@0.9.4",
+    "css": "github:systemjs/plugin-css@0.1.10",
     "json": "github:systemjs/plugin-json@0.1.0",
     "ngreact": "github:davidchang/ngReact@0.1.4",
-    "oclazyload-systemjs-router": "github:lookfirst/oclazyload-systemjs-router@1.2.1",
-    "react": "npm:react@0.13.1",
+    "oclazyload-systemjs-router": "github:lookfirst/oclazyload-systemjs-router@1.2.2",
+    "react": "npm:react@0.13.2",
     "todomvc-app-css": "github:tastejs/todomvc-app-css@1.0.3",
     "todomvc-common": "github:tastejs/todomvc-common@1.0.1",
-    "github:angular-ui/ui-router@0.2.13": {
+    "github:angular-ui/ui-router@0.2.14": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
     "github:angular/bower-angular-mocks@1.3.15": {
@@ -39,7 +39,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.1.2"
+      "buffer": "npm:buffer@3.2.1"
     },
     "github:jspm/nodelibs-events@0.1.0": {
       "events-browserify": "npm:events-browserify@0.0.1"
@@ -73,14 +73,14 @@ System.config({
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
     },
-    "github:lookfirst/oclazyload-systemjs-router@1.2.1": {
+    "github:lookfirst/oclazyload-systemjs-router@1.2.2": {
       "angular": "github:angular/bower-angular@1.3.15",
-      "angular-ui-router": "github:angular-ui/ui-router@0.2.13",
-      "oclazyload": "github:ocombe/ocLazyLoad@1.0.0-alpha2",
+      "angular-ui-router": "github:angular-ui/ui-router@0.2.14",
+      "oclazyload": "github:ocombe/ocLazyLoad@1.0.0-beta.2",
       "ui-router-extras": "github:christopherthielen/ui-router-extras@0.0.13"
     },
-    "github:systemjs/plugin-css@0.1.9": {
-      "clean-css": "npm:clean-css@3.1.8",
+    "github:systemjs/plugin-css@0.1.10": {
+      "clean-css": "npm:clean-css@3.1.9",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
@@ -93,15 +93,12 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@4.7.16": {
-      "process": "github:jspm/nodelibs-process@0.1.1"
-    },
-    "npm:buffer@3.1.2": {
+    "npm:buffer@3.2.1": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.4",
       "is-array": "npm:is-array@1.0.1"
     },
-    "npm:clean-css@3.1.8": {
+    "npm:clean-css@3.1.9": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.6.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -120,7 +117,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:core-js@0.8.4": {
+    "npm:core-js@0.9.4": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-util-is@1.0.1": {
@@ -129,7 +126,7 @@ System.config({
     "npm:envify@3.4.0": {
       "jstransform": "npm:jstransform@10.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
-      "through": "npm:through@2.3.6"
+      "through": "npm:through@2.3.7"
     },
     "npm:esprima-fb@13001.1001.0-dev-harmony-fb": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -161,7 +158,7 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:react@0.13.1": {
+    "npm:react@0.13.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
@@ -198,7 +195,7 @@ System.config({
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
-    "npm:through@2.3.6": {
+    "npm:through@2.3.7": {
       "process": "github:jspm/nodelibs-process@0.1.1",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
