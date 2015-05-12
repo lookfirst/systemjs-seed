@@ -8,7 +8,6 @@ var runSequence = gulpHelpers.framework('run-sequence');
 var path = {
 	source: 'src/**/*.js',
 	coffee: 'src/**/*.coffee',
-	e2e: 'test-e2e/**/*.js',
 	react: 'src/**/*.jsx',
 	html: '**/*.html',
 	templates: ['src/**/*.tpl.html', '!src/index.tpl.html'],
