@@ -19,14 +19,14 @@ System.config({
   "map": {
     "angular": "github:angular/bower-angular@1.3.15",
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
-    "babel": "npm:babel-core@5.1.13",
-    "babel-runtime": "npm:babel-runtime@5.1.13",
-    "core-js": "npm:core-js@0.9.4",
+    "babel": "npm:babel-core@5.2.17",
+    "babel-runtime": "npm:babel-runtime@5.2.17",
+    "core-js": "npm:core-js@0.9.8",
     "css": "github:systemjs/plugin-css@0.1.10",
     "json": "github:systemjs/plugin-json@0.1.0",
     "ngreact": "github:davidchang/ngReact@0.1.4",
     "oclazyload-systemjs-router": "github:lookfirst/oclazyload-systemjs-router@1.2.2",
-    "react": "npm:react@0.13.2",
+    "react": "npm:react@0.13.3",
     "todomvc-app-css": "github:tastejs/todomvc-app-css@1.0.3",
     "todomvc-common": "github:tastejs/todomvc-common@1.0.1",
     "github:angular-ui/ui-router@0.2.14": {
@@ -39,7 +39,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.2.1"
+      "buffer": "npm:buffer@3.2.2"
     },
     "github:jspm/nodelibs-events@0.1.0": {
       "events-browserify": "npm:events-browserify@0.0.1"
@@ -93,9 +93,9 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:buffer@3.2.1": {
+    "npm:buffer@3.2.2": {
       "base64-js": "npm:base64-js@0.0.8",
-      "ieee754": "npm:ieee754@1.1.4",
+      "ieee754": "npm:ieee754@1.1.5",
       "is-array": "npm:is-array@1.0.1"
     },
     "npm:clean-css@3.1.9": {
@@ -117,7 +117,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:core-js@0.9.4": {
+    "npm:core-js@0.9.8": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-util-is@1.0.1": {
@@ -158,7 +158,7 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:react@0.13.2": {
+    "npm:react@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.1"

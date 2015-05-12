@@ -4,6 +4,7 @@
   "description": "seed project for systemjs and angular",
   "author": "Jon Stevens <latchkey@gmail.com>",
   "devDependencies": {
+    "babel": "^5.2.17",
     "gulp": "^3.8.11",
     "gulp-helpers": "^1.5.7",
     "jspm": "^0.15.6",
@@ -42,6 +43,6 @@
     "postinstall": "jspm install && jspm dl-loader",
     "test": "gulp recompile && ./node_modules/gulp-helpers/node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "protractor-setup": "./node_modules/.bin/webdriver-manager update --standalone",
-    "protractor-run": "gulp babel-e2e && ./node_modules/.bin/protractor protractor.conf.js"
+    "protractor-run": "./node_modules/.bin/protractor protractor.conf.js"
   }
 }

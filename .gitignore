@@ -1,7 +1,6 @@
 .idea
 coverage
 dist
-test-e2e-compile
 jspm_packages
 node_modules
 

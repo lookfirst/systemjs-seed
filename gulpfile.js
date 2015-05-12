@@ -9,7 +9,6 @@ var path = {
 	source: 'src/**/*.js',
 	coffee: 'src/**/*.coffee',
 	e2e: 'test-e2e/**/*.js',
-	e2eOutput: 'test-e2e-compile/',
 	react: 'src/**/*.jsx',
 	html: '**/*.html',
 	templates: ['src/**/*.tpl.html', '!src/index.tpl.html'],
@@ -92,13 +91,11 @@ var babelCompilerOptions = {
 	modules: 'system'
 };
 
-taskMaker.defineTask('clean', {taskName: 'clean', src: path.output, taskDeps: ['clean-e2e']});
-taskMaker.defineTask('clean', {taskName: 'clean-e2e', src: path.e2eOutput});
+taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('less', {taskName: 'less', src: path.less, dest: path.output});
 taskMaker.defineTask('less', {taskName: 'less-themes', src: path.themes, dest: path.themesOutput});
 taskMaker.defineTask('babel', {taskName: 'babel', src: [path.source, path.react], dest: path.output, ngAnnotate: true, compilerOptions: babelCompilerOptions});
 taskMaker.defineTask('babel', {taskName: 'babel-coffee', src: path.coffee, dest: path.output, coffee: true, ngAnnotate: true, compilerOptions: babelCompilerOptions});
-taskMaker.defineTask('babel', {taskName: 'babel-e2e', src: path.e2e, dest: path.e2eOutput, compilerOptions: {externalHelpers: false}, taskDeps: ['clean-e2e']});
 taskMaker.defineTask('ngHtml2Js', {taskName: 'html', src: path.templates, dest: path.output, compilerOptions: babelCompilerOptions});
 taskMaker.defineTask('copy', {taskName: 'systemConfig', src: path.systemConfig, dest: path.output});
 taskMaker.defineTask('copy', {taskName: 'assets', src: path.assets, dest: path.output});
