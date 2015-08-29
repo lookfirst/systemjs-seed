@@ -7,6 +7,10 @@
 
 Seed project for ES6 modules via SystemJS with ES6 syntax using Babel (was: 6to5) that lazy-load and bundle build with AngularJS and React.
 
+# Note!
+
+This project is a bit out of date now due to jspm being a bit of a moving target. I've been slammed with starting a new business and haven't had a chance to keep things up to date. PR's welcome!
+
 ## Motivation
 
 For a long time now, I've wanted to create a JavaScript single page app seed project that has the following qualities:
