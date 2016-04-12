@@ -59,12 +59,12 @@ module.exports = function(config) {
       'test-unit/**/*.js': ['babel', 'coverage']
     },
 
-	'babelPreprocessor': {
-	  options: {
-		  sourceMap: 'inline',
-		  modules: 'system'
-	  }
-	},
+    babelPreprocessor: {
+      options: {
+        sourceMap: 'inline',
+        modules: 'system'
+      }
+    },
 
     // optionally, configure the reporter
     coverageReporter: {
